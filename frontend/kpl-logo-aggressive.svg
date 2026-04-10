@@ -1,0 +1,37 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+  <rect x="34" y="34" width="444" height="444" rx="112" stroke="url(#frame)" stroke-width="12" opacity="0.78"/>
+
+  <g filter="url(#glow)">
+    <path d="M100 337H150L183 286L215 350L256 202L297 311L332 258H412" stroke="#66F2D1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <path d="M169 146H229V228L306 146H381L296 239L390 366H322L258 281L229 309V366H169V146Z" fill="#F4FBFF"/>
+  <path d="M169 146H229V228L306 146H381L296 239L390 366H322L258 281L229 309V366H169V146Z" fill="url(#metal)" fill-opacity="0.24"/>
+
+  <path d="M316 111L346 79L376 111H354L372 144H339L357 111H316Z" fill="#FFD166"/>
+  <path d="M246 126L274 96L302 126H281L297 155H251L267 126H246Z" fill="#FFF1B8"/>
+  <path d="M178 146L206 116L234 146H213L229 175H183L199 146H178Z" fill="#FFD166"/>
+
+  <defs>
+    <linearGradient id="bg" x1="65" y1="43" x2="444" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081018"/>
+      <stop offset="0.45" stop-color="#0B2533"/>
+      <stop offset="1" stop-color="#103E48"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="82" y1="72" x2="425" y2="446" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7EF7E2"/>
+      <stop offset="0.55" stop-color="#66F2D1"/>
+      <stop offset="1" stop-color="#FFD166"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="183" y1="153" x2="362" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#66F2D1"/>
+    </linearGradient>
+    <filter id="glow" x="74" y="176" width="364" height="200" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="7" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+  </defs>
+</svg>
