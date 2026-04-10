@@ -46,6 +46,21 @@ body {
   box-shadow: var(--shadow);
 }
 
+.brand-mark-wrap {
+  flex: 0 0 auto;
+  padding: 10px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.brand-mark {
+  display: block;
+  width: clamp(88px, 11vw, 128px);
+  height: auto;
+}
+
 .eyebrow,
 .label {
   font-family: "IBM Plex Mono", monospace;
@@ -65,6 +80,15 @@ body {
   margin-top: 8px;
   font-size: clamp(2rem, 4vw, 3.7rem);
   line-height: 0.95;
+}
+
+.brand-line {
+  margin: 14px 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 0.84rem;
 }
 
 .hero-text {
@@ -285,10 +309,15 @@ button:disabled {
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .config-panel,
   .lookup-panel {
     grid-column: span 12;
+  }
+
+  .brand-mark-wrap {
+    align-self: flex-start;
   }
 }
