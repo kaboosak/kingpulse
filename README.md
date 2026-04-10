@@ -20,9 +20,9 @@ KingPulse is a Solidity ERC20 token project for Monad with:
 
 Monad mainnet deployment:
 
-- Official contract: `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
+- Official contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
 - Chain ID: `143`
-- Explorer: `https://monadvision.com/address/0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7#code`
+- Explorer: `https://monadvision.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c#code`
 
 Monad testnet deployment:
 
@@ -32,7 +32,7 @@ Monad testnet deployment:
 
 ## Mainnet Status
 
-- Official mainnet contract: `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
+- Official mainnet contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
 - Official testnet contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
 - Operations runbook: [OPERATIONS.md](/home/el3aw/kingpulse/OPERATIONS.md#L1)
 - Tokenomics: [TOKENOMICS.md](/home/el3aw/kingpulse/TOKENOMICS.md#L1)
@@ -107,7 +107,7 @@ OPERATOR_PRIVATE_KEY=operator_wallet_private_key_without_0x
 PRIVATE_KEY=optional_legacy_fallback_admin_key_without_0x
 ETHERSCAN_API_KEY=your_etherscan_api_key
 KINGPULSE_ADDRESS=0xd03f87cba1066afC456ca30cB76E368c18177691
-KINGPULSE_MAINNET_ADDRESS=0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7
+KINGPULSE_MAINNET_ADDRESS=0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c
 ```
 
 ## Admin / Operator Workflow
@@ -168,7 +168,7 @@ npm run verify:monad:mainnet -- 0xYourMainnetContractAddress
 ```
 
 Before using them, complete [MAINNET_CHECKLIST.md](/home/el3aw/kingpulse/MAINNET_CHECKLIST.md#L1).
-The current official mainnet contract is `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`.
+The current official mainnet contract is `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`.
 
 ## Token Info And Balance Commands
 

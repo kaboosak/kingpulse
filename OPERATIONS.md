@@ -6,8 +6,8 @@ This document records the current operational state for KingPulse and should be 
 
 - Network: Monad Mainnet
 - Chain ID: `143`
-- Official contract: `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
-- Explorer: `https://monadvision.com/address/0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7#code`
+- Official contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- Explorer: `https://monadvision.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c#code`
 
 ## Official Testnet Contract
 
@@ -21,7 +21,7 @@ This document records the current operational state for KingPulse and should be 
 Current observed mainnet state:
 
 - Admin wallet:
-  - `0x17C33dB369B0BcAcEc40115f5D1665f43fF70361`
+  - `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
   - This wallet is the current on-chain `owner()`
   - This wallet controls owner-only functions:
     - `mint`
@@ -30,8 +30,8 @@ Current observed mainnet state:
     - `transferOwnership`
 
 - Operator / treasury-distribution wallet:
-  - `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
-  - This wallet currently holds the mainnet initial supply
+  - Reconfirm separately from `.env` and current mainnet balances
+  - Do not assume it differs from the admin wallet without verifying
 
 ## Ownership Policy
 
@@ -47,7 +47,7 @@ Recommended production policy:
 If KPL is intended to remain a live production token:
 
 1. Finalize the official mainnet contract as:
-   - `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
+   - `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
 2. Move owner/admin control to a multisig
 3. Publish the official address everywhere
 4. Mark older mainnet deployments as deprecated
@@ -98,6 +98,7 @@ npm run balance:monad:mainnet -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
 The following mainnet KingPulse deployments should be treated as non-official unless explicitly re-designated:
 
 - `0xd03f87cba1066afC456ca30cB76E368c18177691`
+- `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
 - `0x41eFE909baCddFF028052bb891f7027fb7823723`
 - `0x529C6b93193F8127dAf9849422CBfD0F7d842931`
 - `0xa4BbDE0711ECf0efc7DCeB6004067C1e038a6c35`

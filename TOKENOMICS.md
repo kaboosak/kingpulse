@@ -8,7 +8,7 @@ It should be treated as a living operational document until ownership, treasury 
 
 - Network: Monad Mainnet
 - Chain ID: `143`
-- Official contract: `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
+- Official contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
 - Token name: `KingPulse`
 - Symbol: `KPL`
 - Decimals: `18`
@@ -55,11 +55,11 @@ Total:
 Current observed operational roles:
 
 - Official mainnet admin wallet:
-  - `0x17C33dB369B0BcAcEc40115f5D1665f43fF70361`
+  - `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
   - This wallet is the current on-chain `owner()`
 - Current treasury / distribution wallet:
-  - `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
-  - This wallet currently holds the circulating mainnet supply outside the pool
+  - Reconfirm from live balances before public launch
+  - Do not assume treasury custody is separate from admin unless documented
 
 Target production model:
 
@@ -146,7 +146,7 @@ Users should understand the following:
 
 For a credible public launch:
 
-1. Keep `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7` as the only official mainnet contract
+1. Keep `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` as the only official mainnet contract
 2. Launch with the deeper reference pool of `5,000 MON + 10,845 KPL`
 3. Transfer ownership to a multisig before broad promotion
 4. Publish this tokenomics policy together with the operational runbook and official contract address
