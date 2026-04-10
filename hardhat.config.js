@@ -37,6 +37,11 @@ module.exports = {
       accounts: monadAccounts,
       chainId: 10143,
     },
+    monadMainnet: {
+      url: process.env.MONAD_MAINNET_RPC_URL || "",
+      accounts: monadAccounts,
+      chainId: 143,
+    },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY || "",
@@ -47,6 +52,14 @@ module.exports = {
         urls: {
           apiURL: "https://api.etherscan.io/v2/api",
           browserURL: "https://testnet.monadscan.com",
+        },
+      },
+      {
+        network: "monadMainnet",
+        chainId: 143,
+        urls: {
+          apiURL: "https://api.etherscan.io/v2/api",
+          browserURL: "https://monadvision.com",
         },
       },
     ],

@@ -1,6 +1,6 @@
 # KingPulse
 
-KingPulse is a Solidity ERC20 token project for Monad testnet with:
+KingPulse is a Solidity ERC20 token project for Monad with:
 
 - `ERC20`
 - `ERC20Permit`
@@ -17,6 +17,12 @@ KingPulse is a Solidity ERC20 token project for Monad testnet with:
 - Symbol: `KPL`
 - Decimals: `18`
 - Initial supply: `1,000,000 KPL`
+
+Monad mainnet deployment:
+
+- Contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
+- Chain ID: `143`
+- Explorer: `https://monadvision.com/address/0xd03f87cba1066afC456ca30cB76E368c18177691#code`
 
 Monad testnet deployment:
 
@@ -108,6 +114,21 @@ npm run whoami:monad:owner
 npm run whoami:monad:spender
 ```
 
+## Ownership Policy
+
+Recommended production policy:
+
+- deploy with a dedicated owner wallet
+- verify the contract on mainnet
+- transfer ownership to a multisig immediately after deployment
+- use the multisig for all owner-only actions:
+  - `mint`
+  - `pause`
+  - `unpause`
+  - `transferOwnership`
+
+If you plan to make KPL a public production token, do not leave long-term ownership on a normal single hot wallet.
+
 ## Compile And Test
 
 ```bash
@@ -128,6 +149,15 @@ Verify:
 ```bash
 npm run verify:monad -- 0xd03f87cba1066afC456ca30cB76E368c18177691
 ```
+
+Mainnet-ready commands are also available:
+
+```bash
+npm run deploy:monad:mainnet
+npm run verify:monad:mainnet -- 0xYourMainnetContractAddress
+```
+
+Before using them, complete [MAINNET_CHECKLIST.md](/home/el3aw/kingpulse/MAINNET_CHECKLIST.md#L1).
 
 ## Token Info And Balance Commands
 
@@ -219,6 +249,14 @@ Burn from owner balance using allowance:
 npm run burn-from:monad -- 0xOwnerAddress 10
 ```
 
+Mainnet aliases exist for the same flows, for example:
+
+```bash
+npm run whoami:monad:mainnet:owner
+npm run token-info:monad:mainnet
+npm run native-balance:monad:mainnet -- 0xWalletAddress
+```
+
 ## Frontend
 
 Start the local frontend server:
@@ -236,15 +274,15 @@ http://localhost:4173
 Frontend features:
 
 - connect MetaMask
-- switch to Monad testnet
-- load the deployed contract
+- switch to Monad mainnet
+- load the deployed contract from runtime config
 - mint / transfer / approve / burn / burnFrom
 - pause / unpause
 - permit signing and submission
 - KPL / MON balance lookup
 - allowance lookup
 - recent transaction cards
-- MonadScan links for submitted transactions
+- MonadVision links for submitted transactions
 
 ## Permit Flow
 

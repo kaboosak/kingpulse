@@ -1,9 +1,28 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
 
 const projectRoot = path.resolve(__dirname, "..");
 const port = Number(process.env.PORT || 4173);
+const runtimeConfig = {
+  network: {
+    chainId: 143,
+    chainIdHex: "0x8f",
+    chainName: "Monad Mainnet",
+    nativeCurrency: {
+      name: "Monad",
+      symbol: "MON",
+      decimals: 18,
+    },
+    rpcUrls: process.env.MONAD_MAINNET_RPC_URL ? [process.env.MONAD_MAINNET_RPC_URL] : [],
+    explorerBaseUrl: "https://monadvision.com",
+  },
+  contractAddress:
+    process.env.KINGPULSE_MAINNET_ADDRESS ||
+    process.env.KINGPULSE_ADDRESS ||
+    "0xd03f87cba1066afC456ca30cB76E368c18177691",
+};
 
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
@@ -21,6 +40,15 @@ function resolvePath(urlPath) {
 }
 
 const server = http.createServer((request, response) => {
+  if (request.url.split("?")[0] === "/frontend/runtime-config.json") {
+    response.writeHead(200, {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+    });
+    response.end(JSON.stringify(runtimeConfig));
+    return;
+  }
+
   const filePath = resolvePath(request.url.split("?")[0]);
 
   if (!filePath.startsWith(projectRoot)) {

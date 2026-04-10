@@ -1,16 +1,17 @@
-const MONAD_CHAIN_ID_HEX = "0x279f";
-const MONAD_CHAIN_ID_DECIMAL = 10143;
-const MONAD_EXPLORER_BASE = "https://testnet.monadscan.com";
-const MONAD_NETWORK_CONFIG = {
-  chainId: MONAD_CHAIN_ID_HEX,
-  chainName: "Monad Testnet",
-  nativeCurrency: {
-    name: "Monad",
-    symbol: "MON",
-    decimals: 18,
+let runtimeConfig = {
+  network: {
+    chainId: 143,
+    chainIdHex: "0x8f",
+    chainName: "Monad Mainnet",
+    nativeCurrency: {
+      name: "Monad",
+      symbol: "MON",
+      decimals: 18,
+    },
+    rpcUrls: [],
+    explorerBaseUrl: "https://monadvision.com",
   },
-  rpcUrls: ["https://testnet-rpc.monad.xyz"],
-  blockExplorerUrls: ["https://testnet.monadscan.com"],
+  contractAddress: "0xd03f87cba1066afC456ca30cB76E368c18177691",
 };
 
 const state = {
@@ -19,8 +20,7 @@ const state = {
   account: null,
   owner: null,
   contract: null,
-  contractAddress: localStorage.getItem("kingpulse.contractAddress") ||
-    "0xd03f87cba1066afC456ca30cB76E368c18177691",
+  contractAddress: localStorage.getItem("kingpulse.contractAddress") || runtimeConfig.contractAddress,
   abi: null,
   recentActions: [],
 };
@@ -175,7 +175,7 @@ function formatAmount(value) {
 }
 
 function txUrl(hash) {
-  return `${MONAD_EXPLORER_BASE}/tx/${hash}`;
+  return `${runtimeConfig.network.explorerBaseUrl}/tx/${hash}`;
 }
 
 function normalizeError(error) {
@@ -227,6 +227,20 @@ async function fetchAbi() {
   const artifact = await response.json();
   state.abi = artifact.abi;
   return state.abi;
+}
+
+async function loadRuntimeConfig() {
+  const response = await fetch("/frontend/runtime-config.json");
+
+  if (!response.ok) {
+    throw new Error("Could not load frontend runtime configuration.");
+  }
+
+  runtimeConfig = await response.json();
+
+  if (!localStorage.getItem("kingpulse.contractAddress")) {
+    state.contractAddress = runtimeConfig.contractAddress;
+  }
 }
 
 async function ensureProvider() {
@@ -441,16 +455,28 @@ async function switchToMonad() {
   try {
     await ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: MONAD_CHAIN_ID_HEX }],
+      params: [{ chainId: runtimeConfig.network.chainIdHex }],
     });
   } catch (error) {
     if (error.code !== 4902) {
       throw error;
     }
 
+    if (!runtimeConfig.network.rpcUrls.length) {
+      throw new Error("Mainnet RPC URL is not configured for the frontend server.");
+    }
+
     await ethereum.request({
       method: "wallet_addEthereumChain",
-      params: [MONAD_NETWORK_CONFIG],
+      params: [
+        {
+          chainId: runtimeConfig.network.chainIdHex,
+          chainName: runtimeConfig.network.chainName,
+          nativeCurrency: runtimeConfig.network.nativeCurrency,
+          rpcUrls: runtimeConfig.network.rpcUrls,
+          blockExplorerUrls: [runtimeConfig.network.explorerBaseUrl],
+        },
+      ],
     });
   }
 
@@ -474,8 +500,8 @@ async function submitTransaction(label, buildTx) {
   const provider = await ensureProvider();
   const network = await provider.getNetwork();
 
-  if (Number(network.chainId) !== MONAD_CHAIN_ID_DECIMAL) {
-    throw new Error("Switch your wallet to Monad testnet before sending transactions.");
+  if (Number(network.chainId) !== Number(runtimeConfig.network.chainId)) {
+    throw new Error(`Switch your wallet to ${runtimeConfig.network.chainName} before sending transactions.`);
   }
 
   const tx = await buildTx();
@@ -508,6 +534,7 @@ function bindForm(form, handler) {
 }
 
 async function boot() {
+  await loadRuntimeConfig();
   renderRecentActions();
   elements.contractInput.value = state.contractAddress;
   elements.contractAddress.textContent = state.contractAddress;
