@@ -20,15 +20,23 @@ KingPulse is a Solidity ERC20 token project for Monad with:
 
 Monad mainnet deployment:
 
-- Contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
+- Official contract: `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
 - Chain ID: `143`
-- Explorer: `https://monadvision.com/address/0xd03f87cba1066afC456ca30cB76E368c18177691#code`
+- Explorer: `https://monadvision.com/address/0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7#code`
 
 Monad testnet deployment:
 
 - Contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
 - Chain ID: `10143`
 - Explorer: `https://testnet.monadscan.com/address/0xd03f87cba1066afC456ca30cB76E368c18177691#code`
+
+## Mainnet Status
+
+- Official mainnet contract: `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
+- Official testnet contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
+- Operations runbook: [OPERATIONS.md](/home/el3aw/kingpulse/OPERATIONS.md#L1)
+- Tokenomics: [TOKENOMICS.md](/home/el3aw/kingpulse/TOKENOMICS.md#L1)
+- Mainnet checklist: [MAINNET_CHECKLIST.md](/home/el3aw/kingpulse/MAINNET_CHECKLIST.md#L1)
 
 ## Project Layout
 
@@ -93,11 +101,13 @@ Example:
 
 ```env
 MONAD_RPC_URL=https://testnet-rpc.monad.xyz
-OWNER_PRIVATE_KEY=owner_wallet_private_key_without_0x
-SPENDER_PRIVATE_KEY=spender_wallet_private_key_without_0x
-PRIVATE_KEY=optional_legacy_fallback_owner_key_without_0x
+MONAD_MAINNET_RPC_URL=https://rpc.monad.xyz
+ADMIN_PRIVATE_KEY=admin_wallet_private_key_without_0x
+OPERATOR_PRIVATE_KEY=operator_wallet_private_key_without_0x
+PRIVATE_KEY=optional_legacy_fallback_admin_key_without_0x
 ETHERSCAN_API_KEY=your_etherscan_api_key
 KINGPULSE_ADDRESS=0xd03f87cba1066afC456ca30cB76E368c18177691
+KINGPULSE_MAINNET_ADDRESS=0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7
 ```
 
 ## Admin / Operator Workflow
@@ -158,6 +168,7 @@ npm run verify:monad:mainnet -- 0xYourMainnetContractAddress
 ```
 
 Before using them, complete [MAINNET_CHECKLIST.md](/home/el3aw/kingpulse/MAINNET_CHECKLIST.md#L1).
+The current official mainnet contract is `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`.
 
 ## Token Info And Balance Commands
 
