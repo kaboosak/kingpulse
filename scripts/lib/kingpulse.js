@@ -2,11 +2,16 @@ const hre = require("hardhat");
 const { Wallet } = require("ethers");
 
 function getContractAddress() {
-  const contractAddress = process.env.KINGPULSE_ADDRESS;
+  const contractAddress =
+    hre.network.name === "monadMainnet"
+      ? process.env.KINGPULSE_MAINNET_ADDRESS || process.env.KINGPULSE_ADDRESS
+      : process.env.KINGPULSE_ADDRESS;
 
   if (!contractAddress) {
     throw new Error(
-      "Set KINGPULSE_ADDRESS in .env to your deployed KingPulse contract address."
+      hre.network.name === "monadMainnet"
+        ? "Set KINGPULSE_MAINNET_ADDRESS in .env to your deployed KingPulse mainnet contract address."
+        : "Set KINGPULSE_ADDRESS in .env to your deployed KingPulse contract address."
     );
   }
 
@@ -14,7 +19,7 @@ function getContractAddress() {
 }
 
 function getSignerRole() {
-  return process.env.KINGPULSE_SIGNER || "owner";
+  return process.env.KINGPULSE_SIGNER || "admin";
 }
 
 function normalizePrivateKey(value) {
@@ -27,14 +32,18 @@ function normalizePrivateKey(value) {
 }
 
 function getPrivateKeyForRole(role) {
-  if (role === "owner") {
+  if (role === "admin") {
     return normalizePrivateKey(
-      process.env.OWNER_PRIVATE_KEY || process.env.PRIVATE_KEY
+      process.env.ADMIN_PRIVATE_KEY ||
+      process.env.OWNER_PRIVATE_KEY ||
+      process.env.PRIVATE_KEY
     );
   }
 
-  if (role === "spender") {
-    return normalizePrivateKey(process.env.SPENDER_PRIVATE_KEY);
+  if (role === "operator") {
+    return normalizePrivateKey(
+      process.env.OPERATOR_PRIVATE_KEY || process.env.SPENDER_PRIVATE_KEY
+    );
   }
 
   throw new Error(`Unsupported signer role: ${role}`);
@@ -45,7 +54,7 @@ async function getSigner() {
 
   if (hre.network.name === "hardhat") {
     const signers = await hre.ethers.getSigners();
-    const signer = role === "spender" ? signers[1] : signers[0];
+    const signer = role === "operator" ? signers[1] : signers[0];
 
     if (!signer) {
       throw new Error(`No ${role} signer is available on the hardhat network.`);
@@ -60,9 +69,9 @@ async function getSigner() {
     throw new Error(
       [
         `No ${role} private key is configured for the selected network.`,
-        role === "owner"
-          ? "Set OWNER_PRIVATE_KEY in .env, or fall back to PRIVATE_KEY."
-          : "Set SPENDER_PRIVATE_KEY in .env.",
+        role === "admin"
+          ? "Set ADMIN_PRIVATE_KEY in .env, or fall back to OWNER_PRIVATE_KEY / PRIVATE_KEY."
+          : "Set OPERATOR_PRIVATE_KEY in .env, or fall back to SPENDER_PRIVATE_KEY.",
         "Run the command without sudo.",
       ].join(" ")
     );

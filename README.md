@@ -100,34 +100,34 @@ ETHERSCAN_API_KEY=your_etherscan_api_key
 KINGPULSE_ADDRESS=0xd03f87cba1066afC456ca30cB76E368c18177691
 ```
 
-## Owner / Spender Workflow
+## Admin / Operator Workflow
 
 This project supports two roles:
 
-- `owner`: the token owner wallet
-- `spender`: a secondary wallet used for allowance-based actions like `burnFrom`
+- `admin`: the wallet that should currently control owner-only actions
+- `operator`: a secondary wallet used for allowance-based actions like `burnFrom`
 
 Check the configured wallets:
 
 ```bash
-npm run whoami:monad:owner
-npm run whoami:monad:spender
+npm run whoami:monad:admin
+npm run whoami:monad:operator
 ```
 
 ## Ownership Policy
 
 Recommended production policy:
 
-- deploy with a dedicated owner wallet
+- deploy with a dedicated admin wallet
 - verify the contract on mainnet
 - transfer ownership to a multisig immediately after deployment
-- use the multisig for all owner-only actions:
+- use the multisig/current admin for all owner-only actions:
   - `mint`
   - `pause`
   - `unpause`
   - `transferOwnership`
 
-If you plan to make KPL a public production token, do not leave long-term ownership on a normal single hot wallet.
+Important: trust the on-chain `owner()` result, not an old local label. If the actual owner changes, update `ADMIN_PRIVATE_KEY` to match the wallet that currently controls the contract.
 
 ## Compile And Test
 
@@ -185,7 +185,7 @@ Allowance:
 npm run allowance:monad -- 0xOwnerAddress 0xSpenderAddress
 ```
 
-## Owner Commands
+## Admin Commands
 
 Mint:
 
@@ -225,22 +225,22 @@ npm run unpause:monad
 
 ## Spender Commands
 
-Transfer from spender wallet:
+Transfer from operator wallet:
 
 ```bash
-npm run transfer:monad:spender -- 0xRecipientAddress 5
+npm run transfer:monad:operator -- 0xRecipientAddress 5
 ```
 
-Approve from spender wallet:
+Approve from operator wallet:
 
 ```bash
-npm run approve:monad:spender -- 0xAnotherSpender 10
+npm run approve:monad:operator -- 0xAnotherSpender 10
 ```
 
-Burn from spender wallet:
+Burn from operator wallet:
 
 ```bash
-npm run burn:monad:spender -- 2
+npm run burn:monad:operator -- 2
 ```
 
 Burn from owner balance using allowance:
@@ -252,7 +252,7 @@ npm run burn-from:monad -- 0xOwnerAddress 10
 Mainnet aliases exist for the same flows, for example:
 
 ```bash
-npm run whoami:monad:mainnet:owner
+npm run whoami:monad:mainnet:admin
 npm run token-info:monad:mainnet
 npm run native-balance:monad:mainnet -- 0xWalletAddress
 ```
@@ -305,8 +305,8 @@ npm run allowance:monad -- 0xOwnerAddress 0xSpenderAddress
 - Do not use `sudo` for npm, Hardhat, or project scripts.
 - Do not paste private keys into terminals, chat, or source files.
 - Use a separate wallet for testing when possible.
-- Owner-only actions require the owner wallet.
-- `burnFrom` requires both allowance and MON gas on the spender wallet.
+- Owner-only actions require the current admin wallet.
+- `burnFrom` requires both allowance and MON gas on the operator wallet.
 
 ## Current Status
 
