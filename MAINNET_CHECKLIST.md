@@ -37,18 +37,18 @@ Use this checklist before deploying KingPulse to Monad mainnet.
 Update `.env` with production values:
 
 ```env
-MONAD_MAINNET_RPC_URL=your_mainnet_rpc_url
+MONAD_RPC_URL=your_mainnet_rpc_url
 OWNER_PRIVATE_KEY=your_mainnet_owner_private_key_without_0x
 SPENDER_PRIVATE_KEY=optional_mainnet_spender_private_key_without_0x
 ETHERSCAN_API_KEY=your_etherscan_api_key
-KINGPULSE_MAINNET_ADDRESS=
+KINGPULSE_ADDRESS=
 ```
 
 Check the configured owner wallet:
 
 ```bash
-npm run whoami:monad:mainnet:owner
-npm run native-balance:monad:mainnet -- 0xYourOwnerAddress
+npm run whoami:admin
+npm run native-balance -- 0xYourOwnerAddress
 ```
 
 ## 5. Pre-Deployment Validation
@@ -62,14 +62,14 @@ npm test
 
 - Review `hardhat.config.js` mainnet settings.
 - Confirm the RPC endpoint is correct and stable.
-- Confirm the wallet connected to `monadMainnet` is the intended owner.
+- Confirm the wallet connected to `monad` is the intended owner.
 
 ## 6. Deploy To Mainnet
 
 Deploy:
 
 ```bash
-npm run deploy:monad:mainnet
+npm run deploy
 ```
 
 Record immediately:
@@ -82,7 +82,7 @@ Record immediately:
 Then store the address in `.env`:
 
 ```env
-KINGPULSE_MAINNET_ADDRESS=0xYourMainnetContractAddress
+KINGPULSE_ADDRESS=0xYourMainnetContractAddress
 ```
 
 ## 7. Verify The Contract
@@ -90,7 +90,7 @@ KINGPULSE_MAINNET_ADDRESS=0xYourMainnetContractAddress
 Verify on mainnet:
 
 ```bash
-npm run verify:monad:mainnet -- 0xYourMainnetContractAddress
+npm run verify -- 0xYourMainnetContractAddress
 ```
 
 If the explorer configuration changes, re-check the official Monad docs before retrying.
@@ -100,8 +100,8 @@ If the explorer configuration changes, re-check the official Monad docs before r
 Run read-only checks:
 
 ```bash
-npm run token-info:monad:mainnet
-npm run balance:monad:mainnet -- 0xYourOwnerAddress
+npm run token-info
+npm run balance -- 0xYourOwnerAddress
 ```
 
 Run controlled functional checks with small values:
@@ -119,13 +119,13 @@ Run controlled functional checks with small values:
 If using multisig or treasury custody, transfer ownership:
 
 ```bash
-npm run transfer-ownership:monad:mainnet -- 0xYourMultisigAddress
+npm run transfer-ownership -- 0xYourMultisigAddress
 ```
 
 Then verify:
 
 ```bash
-npm run token-info:monad:mainnet
+npm run token-info
 ```
 
 ## 10. Launch Operations
@@ -141,4 +141,4 @@ npm run token-info:monad:mainnet
 - Do not use `sudo` for npm, Hardhat, or project scripts.
 - Do not deploy mainnet from a wallet you use casually.
 - Do not publish an address before verification and validation.
-- Do not assume testnet RPC, explorer, or gas behavior exactly matches mainnet.
+- Do not publish a contract or workflow that is outside the official mainnet path.

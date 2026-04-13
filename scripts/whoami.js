@@ -1,14 +1,15 @@
-const hre = require("hardhat");
-const { getContract } = require("./lib/kingpulse");
+import { network } from "hardhat";
+import { formatEther } from "ethers";
+import { getContract } from "./lib/kingpulse.js";
 
 async function main() {
-  const { signer, contractAddress } = await getContract();
-  const balance = await hre.ethers.provider.getBalance(signer.address);
+  const { ethers, networkName, signer, contractAddress } = await getContract();
+  const balance = await ethers.provider.getBalance(signer.address);
 
-  console.log(`Network: ${hre.network.name}`);
+  console.log(`Network: ${networkName}`);
   console.log(`Signer role: ${process.env.KINGPULSE_SIGNER || "owner"}`);
   console.log(`Signer address: ${signer.address}`);
-  console.log(`Native balance: ${hre.ethers.formatEther(balance)} MON`);
+  console.log(`Native balance: ${formatEther(balance)} MON`);
   console.log(`Contract: ${contractAddress}`);
 }
 

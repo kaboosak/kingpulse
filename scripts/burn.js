@@ -1,15 +1,15 @@
-const {
+import {
   formatTokenAmount,
   getContract,
   parseTokenAmount,
   sendContractTransaction,
-} = require("./lib/kingpulse");
+} from "./lib/kingpulse.js";
 
 async function main() {
   const amountInput = process.argv[2];
 
   if (!amountInput) {
-    throw new Error("Usage: npm run burn:monad -- <amount>");
+    throw new Error("Usage: npm run burn -- <amount>");
   }
 
   const { signer, contract, contractAddress } = await getContract();

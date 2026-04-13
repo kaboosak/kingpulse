@@ -1,14 +1,14 @@
-const {
+import {
   formatTokenAmount,
   getReadOnlyContract,
   parseAddress,
-} = require("./lib/kingpulse");
+} from "./lib/kingpulse.js";
 
 async function main() {
   const accountInput = process.argv[2];
 
   if (!accountInput) {
-    throw new Error("Usage: npm run balance:monad -- <wallet_address>");
+    throw new Error("Usage: npm run balance -- <wallet_address>");
   }
 
   const { contract, contractAddress } = await getReadOnlyContract();

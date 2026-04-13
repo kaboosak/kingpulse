@@ -9,7 +9,7 @@ let runtimeConfig = {
       decimals: 18,
     },
     rpcUrls: [],
-    explorerBaseUrl: "https://monadscan.com",
+    explorerBaseUrl: "https://monadvision.com",
   },
   contractAddress: "0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c",
 };
@@ -187,7 +187,7 @@ function normalizeError(error) {
     "Transaction failed.";
 
   if (raw.includes("BAD_DATA") || raw.includes("could not decode result data")) {
-    return "The selected address is not a KingPulse contract on Monad mainnet.";
+    return "The selected address is not a KingPulse contract on Monad testnet.";
   }
 
   if (raw.includes("OwnableUnauthorizedAccount")) {
@@ -483,7 +483,7 @@ async function switchToMonad() {
   state.provider = null;
   state.signer = null;
   state.contract = null;
-  log("Monad mainnet selected.");
+  log("Monad testnet selected.");
   await refreshSession();
 }
 

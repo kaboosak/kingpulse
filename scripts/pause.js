@@ -1,4 +1,4 @@
-const { getContract, sendContractTransaction } = require("./lib/kingpulse");
+import { getContract, sendContractTransaction } from "./lib/kingpulse.js";
 
 async function main() {
   const { signer, contract, contractAddress } = await getContract();

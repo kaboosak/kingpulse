@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KingPulse Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/frontend/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="brand-mark-wrap">
+          <img class="brand-mark" src="/frontend/kpl-logo-luxury.svg" alt="KPL logo" />
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Monad Mainnet</p>
+          <h1>KingPulse Wallet Console</h1>
+          <p class="brand-line">KPL</p>
+          <p class="hero-text">
+            Connect a wallet, inspect the live KingPulse token state, and submit
+            owner or user actions directly from the browser.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button id="connect-wallet" class="primary-button">Connect Wallet</button>
+          <button id="switch-network" class="secondary-button">Switch To Monad Mainnet</button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel status-panel">
+          <div class="panel-header">
+            <h2>Session</h2>
+            <button id="refresh-state" class="ghost-button">Refresh</button>
+          </div>
+          <div class="status-grid">
+            <div>
+              <span class="label">Wallet</span>
+              <p id="connected-account">Not connected</p>
+            </div>
+            <div>
+              <span class="label">Chain</span>
+              <p id="network-name">Unknown</p>
+            </div>
+            <div>
+              <span class="label">Contract</span>
+              <p id="contract-address">Not loaded</p>
+            </div>
+            <div>
+              <span class="label">Role</span>
+              <p id="wallet-role">Unknown</p>
+            </div>
+            <div>
+              <span class="label">MON Balance</span>
+              <p id="native-balance">-</p>
+            </div>
+            <div>
+              <span class="label">KPL Balance</span>
+              <p id="token-balance">-</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel config-panel">
+          <div class="panel-header">
+            <h2>Target Contract</h2>
+          </div>
+          <label>
+            Contract Address
+            <input
+              id="contract-input"
+              type="text"
+              value="0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c"
+              spellcheck="false"
+            />
+          </label>
+          <button id="load-contract" class="secondary-button">Load Contract</button>
+        </section>
+
+        <section class="panel info-panel">
+          <div class="panel-header">
+            <h2>Token Info</h2>
+          </div>
+          <div class="info-grid">
+            <div>
+              <span class="label">Name</span>
+              <p id="token-name">-</p>
+            </div>
+            <div>
+              <span class="label">Symbol</span>
+              <p id="token-symbol">-</p>
+            </div>
+            <div>
+              <span class="label">Decimals</span>
+              <p id="token-decimals">-</p>
+            </div>
+            <div>
+              <span class="label">Total Supply</span>
+              <p id="token-supply">-</p>
+            </div>
+            <div>
+              <span class="label">Owner</span>
+              <p id="token-owner">-</p>
+            </div>
+            <div>
+              <span class="label">Paused</span>
+              <p id="token-paused">-</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel lookup-panel">
+          <div class="panel-header">
+            <h2>Lookups</h2>
+          </div>
+          <form id="balance-form" class="stack-form">
+            <h3>Wallet Balance</h3>
+            <input id="balance-address" type="text" placeholder="0x..." spellcheck="false" />
+            <button class="secondary-button" type="submit">Check Balance</button>
+            <p id="balance-result" class="result-line">-</p>
+          </form>
+
+          <form id="allowance-form" class="stack-form">
+            <h3>Allowance</h3>
+            <input id="allowance-owner" type="text" placeholder="Owner address" spellcheck="false" />
+            <input id="allowance-spender" type="text" placeholder="Spender address" spellcheck="false" />
+            <button class="secondary-button" type="submit">Check Allowance</button>
+            <p id="allowance-result" class="result-line">-</p>
+          </form>
+        </section>
+
+        <section class="panel actions-panel">
+          <div class="panel-header">
+            <h2>Token Actions</h2>
+          </div>
+          <div class="actions-grid">
+            <form id="mint-form" class="action-card">
+              <h3>Mint</h3>
+              <p id="mint-hint" class="hint-line">Owner wallet required.</p>
+              <input id="mint-recipient" type="text" placeholder="Recipient address" spellcheck="false" />
+              <input id="mint-amount" type="text" placeholder="Amount in KPL" />
+              <button class="primary-button" type="submit">Mint</button>
+              <p id="mint-result" class="result-line">-</p>
+            </form>
+
+            <form id="transfer-form" class="action-card">
+              <h3>Transfer</h3>
+              <input id="transfer-recipient" type="text" placeholder="Recipient address" spellcheck="false" />
+              <input id="transfer-amount" type="text" placeholder="Amount in KPL" />
+              <button class="primary-button" type="submit">Transfer</button>
+              <p id="transfer-result" class="result-line">-</p>
+            </form>
+
+            <form id="approve-form" class="action-card">
+              <h3>Approve</h3>
+              <p id="approve-hint" class="hint-line">Approves a spender from the connected wallet.</p>
+              <input id="approve-spender" type="text" placeholder="Spender address" spellcheck="false" />
+              <input id="approve-amount" type="text" placeholder="Amount in KPL" />
+              <button class="primary-button" type="submit">Approve</button>
+              <p id="approve-result" class="result-line">-</p>
+            </form>
+
+            <form id="permit-form" class="action-card">
+              <h3>Permit</h3>
+              <p id="permit-hint" class="hint-line">Signs EIP-2612 approval with the connected wallet and submits it on-chain.</p>
+              <input id="permit-spender" type="text" placeholder="Spender address" spellcheck="false" />
+              <input id="permit-amount" type="text" placeholder="Amount in KPL" />
+              <input id="permit-deadline" type="text" placeholder="Deadline in minutes from now (default 60)" />
+              <button class="primary-button" type="submit">Sign Permit</button>
+              <p id="permit-result" class="result-line">-</p>
+            </form>
+
+            <form id="burn-form" class="action-card">
+              <h3>Burn</h3>
+              <input id="burn-amount" type="text" placeholder="Amount in KPL" />
+              <button class="primary-button" type="submit">Burn</button>
+              <p id="burn-result" class="result-line">-</p>
+            </form>
+
+            <form id="burn-from-form" class="action-card">
+              <h3>Burn From</h3>
+              <p id="burn-from-hint" class="hint-line">Requires allowance for the connected wallet.</p>
+              <input id="burn-from-owner" type="text" placeholder="Owner address" spellcheck="false" />
+              <input id="burn-from-amount" type="text" placeholder="Amount in KPL" />
+              <button class="primary-button" type="submit">Burn From</button>
+              <p id="burn-from-result" class="result-line">-</p>
+            </form>
+
+            <div class="action-card compact-actions">
+              <h3>Pause Controls</h3>
+              <p id="pause-hint" class="hint-line">Owner wallet required.</p>
+              <button id="pause-button" class="secondary-button" type="button">Pause</button>
+              <button id="unpause-button" class="secondary-button" type="button">Unpause</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel activity-panel">
+          <div class="panel-header">
+            <h2>Activity</h2>
+          </div>
+          <div id="recent-actions" class="recent-actions">
+            <p class="empty-state">No transactions yet.</p>
+          </div>
+          <div id="activity-log" class="activity-log">Ready.</div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/node_modules/ethers/dist/ethers.umd.min.js"></script>
+    <script type="module" src="/frontend/app.js"></script>
+  </body>
+</html>

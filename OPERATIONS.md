@@ -7,18 +7,15 @@ This document records the current operational state for KingPulse and should be 
 - Network: Monad Mainnet
 - Chain ID: `143`
 - Official contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Explorer: `https://monadvision.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c#code`
-
-## Official Testnet Contract
-
-- Network: Monad Testnet
-- Chain ID: `10143`
-- Contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
-- Explorer: `https://testnet.monadscan.com/address/0xd03f87cba1066afC456ca30cB76E368c18177691#code`
+- Explorer: `https://monadscan.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c#code`
 
 ## Current Role Model
 
 Current observed mainnet state:
+
+- Live total supply:
+  - `1,000,200 KPL`
+  - This is `200 KPL` above the original `1,000,000 KPL` baseline
 
 - Admin wallet:
   - `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
@@ -58,13 +55,13 @@ When a multisig is ready:
 
 ```bash
 cd /home/el3aw/kingpulse
-npm run transfer-ownership:monad:mainnet -- 0xYourMultisigAddress
+npm run transfer-ownership -- 0xYourMultisigAddress
 ```
 
 Then verify:
 
 ```bash
-npm run token-info:monad:mainnet
+npm run token-info
 ```
 
 ## Verification Commands
@@ -72,31 +69,32 @@ npm run token-info:monad:mainnet
 Check official mainnet contract info:
 
 ```bash
-npm run token-info:monad:mainnet
+npm run token-info
 ```
 
 Check the admin signer currently configured in `.env`:
 
 ```bash
-npm run whoami:monad:mainnet:admin
+npm run whoami:admin
 ```
 
 Check the operator signer currently configured in `.env`:
 
 ```bash
-npm run whoami:monad:mainnet:operator
+npm run whoami:operator
 ```
 
 Check treasury balance:
 
 ```bash
-npm run balance:monad:mainnet -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
+npm run balance -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
 ```
 
 ## Deprecated Mainnet Deployments
 
 The following mainnet KingPulse deployments should be treated as non-official unless explicitly re-designated:
 
+- `0xBC51Ff6E0e03d13B7C9c9916c931Ce69589c0F54`
 - `0xd03f87cba1066afC456ca30cB76E368c18177691`
 - `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
 - `0x41eFE909baCddFF028052bb891f7027fb7823723`

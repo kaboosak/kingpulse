@@ -1,7 +1,13 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
+import { readFile } from "node:fs";
+import { createServer } from "node:http";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import dotenv from "dotenv";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.resolve(__dirname, "..", ".env") });
 
 const projectRoot = path.resolve(__dirname, "..");
 const port = Number(process.env.PORT || 4173);
@@ -15,8 +21,12 @@ const runtimeConfig = {
       symbol: "MON",
       decimals: 18,
     },
-    rpcUrls: process.env.MONAD_MAINNET_RPC_URL ? [process.env.MONAD_MAINNET_RPC_URL] : [],
-    explorerBaseUrl: "https://monadvision.com",
+    rpcUrls: process.env.MONAD_RPC_URL
+      ? [process.env.MONAD_RPC_URL]
+      : process.env.MONAD_MAINNET_RPC_URL
+        ? [process.env.MONAD_MAINNET_RPC_URL]
+        : [],
+    explorerBaseUrl: "https://monadscan.com",
   },
   contractAddress:
     process.env.KINGPULSE_MAINNET_ADDRESS ||
@@ -39,7 +49,7 @@ function resolvePath(urlPath) {
   return path.join(projectRoot, safePath);
 }
 
-const server = http.createServer((request, response) => {
+const server = createServer((request, response) => {
   if (request.url.split("?")[0] === "/frontend/runtime-config.json") {
     response.writeHead(200, {
       "Content-Type": "application/json; charset=utf-8",
@@ -57,7 +67,7 @@ const server = http.createServer((request, response) => {
     return;
   }
 
-  fs.readFile(filePath, (error, data) => {
+  readFile(filePath, (error, data) => {
     if (error) {
       response.writeHead(error.code === "ENOENT" ? 404 : 500);
       response.end(error.code === "ENOENT" ? "Not found" : "Server error");

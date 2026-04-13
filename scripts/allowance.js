@@ -1,15 +1,15 @@
-const {
+import {
   formatTokenAmount,
   getReadOnlyContract,
   parseAddress,
-} = require("./lib/kingpulse");
+} from "./lib/kingpulse.js";
 
 async function main() {
   const ownerInput = process.argv[2];
   const spenderInput = process.argv[3];
 
   if (!ownerInput || !spenderInput) {
-    throw new Error("Usage: npm run allowance:monad -- <owner> <spender>");
+    throw new Error("Usage: npm run allowance -- <owner> <spender>");
   }
 
   const { contract, contractAddress } = await getReadOnlyContract();

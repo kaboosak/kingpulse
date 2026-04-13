@@ -1,17 +1,17 @@
-const {
+import {
   formatTokenAmount,
   getContract,
   parseAddress,
   parseTokenAmount,
   sendContractTransaction,
-} = require("./lib/kingpulse");
+} from "./lib/kingpulse.js";
 
 async function main() {
   const to = process.argv[2];
   const amountInput = process.argv[3];
 
   if (!to || !amountInput) {
-    throw new Error("Usage: npm run mint:monad -- <to> <amount>");
+    throw new Error("Usage: npm run mint -- <to> <amount>");
   }
 
   const { signer, contract, contractAddress } = await getContract();

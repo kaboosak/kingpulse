@@ -17,6 +17,8 @@ It should be treated as a living operational document until ownership, treasury 
 
 - Fixed initial supply at launch: `1,000,000 KPL`
 - Initial supply minted to treasury / distribution wallet at deployment
+- Current live on-chain total supply: `1,000,200 KPL`
+- Additional live supply above launch baseline: `200 KPL`
 
 ## Launch Pricing Model
 
@@ -35,7 +37,7 @@ The exact pool ratio should be recalculated immediately before adding liquidity 
 
 ## Proposed Supply Allocation
 
-The following allocation applies to the `989,155 KPL` that remains outside the initial launch pool:
+The following allocation applies to the original `989,155 KPL` that remained outside the initial launch pool:
 
 | Category | KPL | Share of Total Supply |
 |---|---:|---:|
@@ -46,9 +48,14 @@ The following allocation applies to the `989,155 KPL` that remains outside the i
 | Future liquidity | 100,000 | 10.0000% |
 | Marketing and partnerships | 39,155 | 3.9155% |
 
-Total:
+Original allocation total at launch:
 
 - `1,000,000 KPL`
+
+Current live note:
+
+- The live contract now reports `1,000,200 KPL` total supply.
+- Public documentation should distinguish the original launch baseline from the current on-chain total.
 
 ## Intended Role Model
 
@@ -92,13 +99,15 @@ This creates a trust-sensitive policy question that must be answered clearly bef
 Recommended public policy options:
 
 1. Conservative policy:
-   - No additional minting beyond the initial `1,000,000 KPL`
+   - No additional minting beyond the original `1,000,000 KPL` launch baseline
    - Mint function retained technically, but treated as unused in practice
 2. Controlled growth policy:
    - Additional minting allowed only by multisig vote
    - Any mint must be announced publicly with purpose and amount
 
 If no firm minting policy is published, the market should assume supply expansion risk exists.
+
+For the current official contract, supply expansion has already occurred by `200 KPL`, so public materials should disclose that explicitly.
 
 ## Pause Policy
 
@@ -131,6 +140,7 @@ Before promoting KPL publicly, publish the following:
 6. Minting policy
 7. Ownership and multisig policy
 8. Clear statement that older mainnet deployments are deprecated
+9. Clear statement that the live supply is `1,000,200 KPL`, not the original `1,000,000 KPL` baseline
 
 ## Risk Disclosures
 
@@ -150,3 +160,4 @@ For a credible public launch:
 2. Launch with the deeper reference pool of `5,000 MON + 10,845 KPL`
 3. Transfer ownership to a multisig before broad promotion
 4. Publish this tokenomics policy together with the operational runbook and official contract address
+5. Explicitly disclose that the live supply is `1,000,200 KPL`

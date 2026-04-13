@@ -1,6 +1,8 @@
-require("dotenv").config();
-require("@nomicfoundation/hardhat-ethers");
-require("@nomicfoundation/hardhat-verify");
+import { defineConfig } from "hardhat/config";
+import hardhatEthers from "@nomicfoundation/hardhat-ethers";
+import hardhatMocha from "@nomicfoundation/hardhat-mocha";
+import hardhatVerify from "@nomicfoundation/hardhat-verify";
+import "dotenv/config";
 
 const normalizedPrivateKey = (
   process.env.OWNER_PRIVATE_KEY || process.env.PRIVATE_KEY || ""
@@ -9,20 +11,37 @@ const monadAccounts = /^[0-9a-fA-F]{64}$/.test(normalizedPrivateKey)
   ? [`0x${normalizedPrivateKey}`]
   : [];
 
-/** @type {import("hardhat/config").HardhatUserConfig} */
-module.exports = {
+export default defineConfig({
+  plugins: [hardhatEthers, hardhatMocha, hardhatVerify],
   defaultNetwork: "hardhat",
   solidity: {
-    version: "0.8.28",
-    settings: {
-      metadata: {
-        bytecodeHash: "ipfs",
+    profiles: {
+      default: {
+        version: "0.8.34",
+        settings: {
+          metadata: {
+            bytecodeHash: "ipfs",
+          },
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+          evmVersion: "cancun",
+        },
       },
-      optimizer: {
-        enabled: true,
-        runs: 200,
+      legacy: {
+        version: "0.8.28",
+        settings: {
+          metadata: {
+            bytecodeHash: "ipfs",
+          },
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+          evmVersion: "cancun",
+        },
       },
-      evmVersion: "cancun",
     },
   },
   paths: {
@@ -31,42 +50,36 @@ module.exports = {
     artifacts: "./artifacts",
   },
   networks: {
-    hardhat: {},
-    monad: {
-      url: process.env.MONAD_RPC_URL || "https://testnet-rpc.monad.xyz",
-      accounts: monadAccounts,
-      chainId: 10143,
+    hardhat: {
+      type: "edr-simulated",
+      chainType: "l1",
     },
-    monadMainnet: {
-      url: process.env.MONAD_MAINNET_RPC_URL || "",
+    monad: {
+      type: "http",
+      chainType: "l1",
+      url: process.env.MONAD_RPC_URL || process.env.MONAD_MAINNET_RPC_URL || "",
       accounts: monadAccounts,
       chainId: 143,
     },
   },
-  etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY || "",
-    customChains: [
-      {
-        network: "monad",
-        chainId: 10143,
-        urls: {
-          apiURL: "https://api.etherscan.io/v2/api",
-          browserURL: "https://testnet.monadscan.com",
+  verify: {
+    etherscan: {
+      apiKey: process.env.ETHERSCAN_API_KEY || "",
+      customChains: [
+        {
+          network: "monad",
+          chainId: 143,
+          urls: {
+            apiURL: "https://api.etherscan.io/v2/api",
+            browserURL: "https://monadvision.com",
+          },
         },
-      },
-      {
-        network: "monadMainnet",
-        chainId: 143,
-        urls: {
-          apiURL: "https://api.etherscan.io/v2/api",
-          browserURL: "https://monadvision.com",
-        },
-      },
-    ],
+      ],
+    },
+    sourcify: {
+      enabled: true,
+      apiUrl: "https://sourcify-api-monad.blockvision.org",
+      browserUrl: "https://monadvision.com",
+    },
   },
-  sourcify: {
-    enabled: true,
-    apiUrl: "https://sourcify-api-monad.blockvision.org",
-    browserUrl: "https://monadvision.com",
-  },
-};
+});

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "initial_liquidity",
+    "recipient": "0x17C33dB369B0BcAcEc40115f5D1665f43fF70361",
+    "amount": "10845"
+  },
+  {
+    "category": "treasury_reserve",
+    "recipient": "0xCd101D34FB1Adf308aF1712Eb04316f48FEA74Da",
+    "amount": "500000"
+  },
+  {
+    "category": "ecosystem_growth",
+    "recipient": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+    "amount": "200000"
+  },
+  {
+    "category": "team_core_contributors",
+    "recipient": "0x330fccDcc5360ffE8a35D516fd022c22633285Ea",
+    "amount": "150000"
+  },
+  {
+    "category": "future_liquidity",
+    "recipient": "0x366f725370Fa789528a1144DfEDc1B553cb00E11",
+    "amount": "100000"
+  },
+  {
+    "category": "marketing_partnerships",
+    "recipient": "0xd0917FCE91F023526514EB69af243cF960c6126B",
+    "amount": "39155"
+  }
+]

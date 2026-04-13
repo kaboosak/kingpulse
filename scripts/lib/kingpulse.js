@@ -1,17 +1,23 @@
-const hre = require("hardhat");
-const { Wallet } = require("ethers");
+import { network } from "hardhat";
+import {
+  Wallet,
+  formatEther,
+  formatUnits,
+  getAddress,
+  isAddress,
+  parseUnits,
+} from "ethers";
 
-function getContractAddress() {
+function getContractAddress(networkName) {
   const contractAddress =
-    hre.network.name === "monadMainnet"
-      ? process.env.KINGPULSE_MAINNET_ADDRESS || process.env.KINGPULSE_ADDRESS
-      : process.env.KINGPULSE_ADDRESS;
+    process.env.KINGPULSE_ADDRESS || process.env.KINGPULSE_MAINNET_ADDRESS;
 
   if (!contractAddress) {
     throw new Error(
-      hre.network.name === "monadMainnet"
-        ? "Set KINGPULSE_MAINNET_ADDRESS in .env to your deployed KingPulse mainnet contract address."
-        : "Set KINGPULSE_ADDRESS in .env to your deployed KingPulse contract address."
+      [
+        "Set KINGPULSE_ADDRESS in .env to your deployed KingPulse mainnet contract address.",
+        "KINGPULSE_MAINNET_ADDRESS is still accepted as a compatibility fallback.",
+      ].join(" ")
     );
   }
 
@@ -51,16 +57,23 @@ function getPrivateKeyForRole(role) {
 
 async function getSigner() {
   const role = getSignerRole();
+  const connection = await network.connect();
+  const { ethers, networkName } = connection;
 
-  if (hre.network.name === "hardhat") {
-    const signers = await hre.ethers.getSigners();
+  if (networkName === "hardhat") {
+    const signers = await ethers.getSigners();
     const signer = role === "operator" ? signers[1] : signers[0];
 
     if (!signer) {
       throw new Error(`No ${role} signer is available on the hardhat network.`);
     }
 
-    return signer;
+    return {
+      connection,
+      ethers,
+      networkName,
+      signer,
+    };
   }
 
   const privateKey = getPrivateKeyForRole(role);
@@ -77,22 +90,29 @@ async function getSigner() {
     );
   }
 
-  return new Wallet(privateKey, hre.ethers.provider);
+  return {
+    connection,
+    ethers,
+    networkName,
+    signer: new Wallet(privateKey, ethers.provider),
+  };
 }
 
 async function getReadOnlyContract() {
-  const contractAddress = getContractAddress();
-  const contract = await hre.ethers.getContractAt("KingPulse", contractAddress);
+  const connection = await network.connect();
+  const { ethers, networkName } = connection;
+  const contractAddress = getContractAddress(networkName);
+  const contract = await ethers.getContractAt("KingPulse", contractAddress);
 
-  return { contract, contractAddress };
+  return { connection, contract, contractAddress, ethers, networkName };
 }
 
 async function getContract() {
-  const signer = await getSigner();
-  const contractAddress = getContractAddress();
-  const contract = await hre.ethers.getContractAt("KingPulse", contractAddress, signer);
+  const { connection, ethers, networkName, signer } = await getSigner();
+  const contractAddress = getContractAddress(networkName);
+  const contract = await ethers.getContractAt("KingPulse", contractAddress, signer);
 
-  return { signer, contract, contractAddress };
+  return { connection, signer, contract, contractAddress, ethers, networkName };
 }
 
 function parseTokenAmount(value) {
@@ -100,7 +120,7 @@ function parseTokenAmount(value) {
     throw new Error("Token amount is required.");
   }
 
-  return hre.ethers.parseUnits(value, 18);
+  return parseUnits(value, 18);
 }
 
 function parseAddress(value, label = "address") {
@@ -108,17 +128,17 @@ function parseAddress(value, label = "address") {
     throw new Error(`${label} is required.`);
   }
 
-  if (!hre.ethers.isAddress(value)) {
+  if (!isAddress(value)) {
     throw new Error(
       `Invalid ${label}: ${value}. Use a real EVM address like 0x1234...abcd.`
     );
   }
 
-  return hre.ethers.getAddress(value);
+  return getAddress(value);
 }
 
 function formatTokenAmount(value) {
-  return hre.ethers.formatUnits(value, 18);
+  return formatUnits(value, 18);
 }
 
 async function getTransactionOverrides(signer, txRequest) {
@@ -140,8 +160,8 @@ async function getTransactionOverrides(signer, txRequest) {
     throw new Error(
       [
         "Signer balance is lower than the transaction's maximum upfront gas cost.",
-        `Balance: ${hre.ethers.formatEther(balance)} MON.`,
-        `Required for gas cap: ${hre.ethers.formatEther(maxUpfrontCost)} MON.`,
+        `Balance: ${formatEther(balance)} MON.`,
+        `Required for gas cap: ${formatEther(maxUpfrontCost)} MON.`,
       ].join(" ")
     );
   }
@@ -165,7 +185,7 @@ async function sendContractTransaction(signer, txRequest) {
   return receipt;
 }
 
-module.exports = {
+export {
   formatTokenAmount,
   getContract,
   getReadOnlyContract,

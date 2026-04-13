@@ -15,7 +15,7 @@ Before launch, confirm:
 
 ```bash
 cd /home/el3aw/kingpulse
-npm run token-info:monad:mainnet
+npm run token-info
 ```
 
 Expected baseline:
@@ -24,8 +24,13 @@ Expected baseline:
 - Name: `KingPulse`
 - Symbol: `KPL`
 - Decimals: `18`
-- Total supply: `1,000,000.0 KPL`
+- Total supply: `1,000,200.0 KPL`
 - Paused: `false`
+
+Supply note:
+
+- The live contract is `200 KPL` above the original `1,000,000 KPL` launch baseline.
+- Do not publish `1,000,000 KPL` as the current live supply.
 
 ## Ownership
 
@@ -42,8 +47,8 @@ If ownership is moving:
 
 ```bash
 cd /home/el3aw/kingpulse
-npm run transfer-ownership:monad:mainnet -- 0xYourMultisigAddress
-npm run token-info:monad:mainnet
+npm run transfer-ownership -- 0xYourMultisigAddress
+npm run token-info
 ```
 
 ## Liquidity Plan
@@ -78,8 +83,8 @@ Suggested verification:
 
 ```bash
 cd /home/el3aw/kingpulse
-npm run balance:monad:mainnet -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
-npm run native-balance:monad:mainnet -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
+npm run balance -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
+npm run native-balance -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
 ```
 
 ## Public Docs
@@ -101,6 +106,7 @@ Official mainnet contract to publish:
 
 Do not promote the following as official:
 
+- `0xBC51Ff6E0e03d13B7C9c9916c931Ce69589c0F54`
 - `0xd03f87cba1066afC456ca30cB76E368c18177691`
 - `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
 - `0x41eFE909baCddFF028052bb891f7027fb7823723`

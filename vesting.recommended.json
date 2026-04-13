@@ -1,0 +1,52 @@
+[
+  {
+    "category": "treasury_reserve",
+    "current_holder": "0xCd101D34FB1Adf308aF1712Eb04316f48FEA74Da",
+    "beneficiary": "0xCd101D34FB1Adf308aF1712Eb04316f48FEA74Da",
+    "amount": "500000",
+    "start": "2026-04-12T00:00:00Z",
+    "durationDays": 730,
+    "signerKeyEnv": "TREASURY_PRIVATE_KEY",
+    "policy": "Move to a multisig-backed vesting wallet and publish a quarterly spending policy."
+  },
+  {
+    "category": "ecosystem_growth",
+    "current_holder": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+    "beneficiary": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+    "amount": "200000",
+    "start": "2026-04-12T00:00:00Z",
+    "durationDays": 730,
+    "signerKeyEnv": "ECOSYSTEM_PRIVATE_KEY",
+    "policy": "Release gradually for grants, incentives, and ecosystem programs."
+  },
+  {
+    "category": "team_core_contributors",
+    "current_holder": "0x330fccDcc5360ffE8a35D516fd022c22633285Ea",
+    "beneficiary": "0x330fccDcc5360ffE8a35D516fd022c22633285Ea",
+    "amount": "150000",
+    "start": "2027-04-12T00:00:00Z",
+    "durationDays": 1095,
+    "signerKeyEnv": "TEAM_PRIVATE_KEY",
+    "policy": "One-year cliff, then three-year linear vesting."
+  },
+  {
+    "category": "future_liquidity",
+    "current_holder": "0x366f725370Fa789528a1144DfEDc1B553cb00E11",
+    "beneficiary": "0x366f725370Fa789528a1144DfEDc1B553cb00E11",
+    "amount": "100000",
+    "start": "2026-10-12T00:00:00Z",
+    "durationDays": 0,
+    "signerKeyEnv": "FUTURE_LIQUIDITY_PRIVATE_KEY",
+    "policy": "Pure timelock for future liquidity decisions."
+  },
+  {
+    "category": "marketing_partnerships",
+    "current_holder": "0xd0917FCE91F023526514EB69af243cF960c6126B",
+    "beneficiary": "0xd0917FCE91F023526514EB69af243cF960c6126B",
+    "amount": "39155",
+    "start": "2026-04-12T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "MARKETING_PRIVATE_KEY",
+    "policy": "Release gradually against a disclosed monthly marketing budget."
+  }
+]

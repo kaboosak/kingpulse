@@ -1,0 +1,32 @@
+[
+  {
+    "category": "initial_liquidity",
+    "recipient": "0xREPLACE_WITH_LIQUIDITY_WALLET",
+    "amount": "10845"
+  },
+  {
+    "category": "treasury_reserve",
+    "recipient": "0xREPLACE_WITH_TREASURY_WALLET",
+    "amount": "500000"
+  },
+  {
+    "category": "ecosystem_growth",
+    "recipient": "0xREPLACE_WITH_ECOSYSTEM_WALLET",
+    "amount": "200000"
+  },
+  {
+    "category": "team_core_contributors",
+    "recipient": "0xREPLACE_WITH_TEAM_VESTING_WALLET",
+    "amount": "150000"
+  },
+  {
+    "category": "future_liquidity",
+    "recipient": "0xREPLACE_WITH_FUTURE_LIQUIDITY_WALLET",
+    "amount": "100000"
+  },
+  {
+    "category": "marketing_partnerships",
+    "recipient": "0xREPLACE_WITH_MARKETING_WALLET",
+    "amount": "39155"
+  }
+]

@@ -1,4 +1,4 @@
-const { formatTokenAmount, getReadOnlyContract } = require("./lib/kingpulse");
+import { formatTokenAmount, getReadOnlyContract } from "./lib/kingpulse.js";
 
 async function main() {
   const { contract, contractAddress } = await getReadOnlyContract();

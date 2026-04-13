@@ -16,24 +16,21 @@ KingPulse is a Solidity ERC20 token project for Monad with:
 - Name: `KingPulse`
 - Symbol: `KPL`
 - Decimals: `18`
-- Initial supply: `1,000,000 KPL`
+- Original launch baseline: `1,000,000 KPL`
+- Current live total supply on-chain: `1,000,200 KPL`
 
 Monad mainnet deployment:
 
 - Official contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
 - Chain ID: `143`
-- Explorer: `https://monadvision.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c#code`
-
-Monad testnet deployment:
-
-- Contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
-- Chain ID: `10143`
-- Explorer: `https://testnet.monadscan.com/address/0xd03f87cba1066afC456ca30cB76E368c18177691#code`
+- Explorer: `https://monadscan.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c#code`
 
 ## Mainnet Status
 
 - Official mainnet contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Official testnet contract: `0xd03f87cba1066afC456ca30cB76E368c18177691`
+- Current on-chain owner: `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
+- Current on-chain total supply: `1,000,200 KPL`
+- Live supply is `200 KPL` above the original `1,000,000 KPL` baseline
 - Operations runbook: [OPERATIONS.md](/home/el3aw/kingpulse/OPERATIONS.md#L1)
 - Tokenomics: [TOKENOMICS.md](/home/el3aw/kingpulse/TOKENOMICS.md#L1)
 - Mainnet checklist: [MAINNET_CHECKLIST.md](/home/el3aw/kingpulse/MAINNET_CHECKLIST.md#L1)
@@ -82,7 +79,7 @@ kingpulse/
 - npm
 - MetaMask or another EVM wallet for frontend use
 
-Note: this project currently runs on Node `18.19.1`, but Hardhat prints a support warning on that version.
+Use Node `22.10.0` or later LTS. The repo pins that floor in `package.json` and `.nvmrc` because Hardhat 3 does not support Node 18.
 
 ## Install
 
@@ -100,14 +97,13 @@ Create `.env` from `.env.example`.
 Example:
 
 ```env
-MONAD_RPC_URL=https://testnet-rpc.monad.xyz
-MONAD_MAINNET_RPC_URL=https://rpc.monad.xyz
+MONAD_RPC_URL=https://rpc.monad.xyz
 ADMIN_PRIVATE_KEY=admin_wallet_private_key_without_0x
 OPERATOR_PRIVATE_KEY=operator_wallet_private_key_without_0x
 PRIVATE_KEY=optional_legacy_fallback_admin_key_without_0x
 ETHERSCAN_API_KEY=your_etherscan_api_key
-KINGPULSE_ADDRESS=0xd03f87cba1066afC456ca30cB76E368c18177691
-KINGPULSE_MAINNET_ADDRESS=0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c
+KINGPULSE_ADDRESS=0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c
+KINGPULSE_MAINNET_ADDRESS=optional_legacy_mainnet_address_fallback
 ```
 
 ## Admin / Operator Workflow
@@ -120,8 +116,8 @@ This project supports two roles:
 Check the configured wallets:
 
 ```bash
-npm run whoami:monad:admin
-npm run whoami:monad:operator
+npm run whoami:admin
+npm run whoami:operator
 ```
 
 ## Ownership Policy
@@ -148,52 +144,154 @@ npm test
 
 ## Deployment And Verification
 
-Deploy to Monad testnet:
+Deploy to Monad mainnet:
 
 ```bash
-npm run deploy:monad
+npm run deploy
 ```
+
+To avoid launching with all supply concentrated in the deployer wallet, you can
+provide a distribution file and spread the initial supply immediately after
+deployment:
+
+```bash
+KINGPULSE_DISTRIBUTION_FILE=distribution.example.json npm run deploy
+```
+
+The distribution file must be a JSON array of `{ "recipient", "amount" }`
+objects. Amounts use whole-token notation and are parsed with 18 decimals.
+
+For production planning, start from:
+
+```bash
+distribution.production.template.json
+```
+
+For an editable launch file already aligned to the current tokenomics split, use:
+
+```bash
+distribution.production.json
+```
+
+Replace every `0x0000000000000000000000000000000000000000` placeholder with a real
+wallet before deploying. The deploy script will reject invalid or duplicate
+recipients.
+
+Live deployments now refuse to proceed without `KINGPULSE_DISTRIBUTION_FILE`.
+After distribution, the deployer wallet must retain no more than `25%` of total
+supply by default. Override intentionally with `KINGPULSE_MAX_RETAINED_BPS` if
+your launch plan requires a different threshold.
 
 Verify:
 
 ```bash
-npm run verify:monad -- 0xd03f87cba1066afC456ca30cB76E368c18177691
+npm run verify -- 0xYourMainnetContractAddress
 ```
 
-Mainnet-ready commands are also available:
+Explicit mainnet aliases are also available:
 
 ```bash
-npm run deploy:monad:mainnet
-npm run verify:monad:mainnet -- 0xYourMainnetContractAddress
+npm run deploy:mainnet
+npm run verify:mainnet -- 0xYourMainnetContractAddress
 ```
 
 Before using them, complete [MAINNET_CHECKLIST.md](/home/el3aw/kingpulse/MAINNET_CHECKLIST.md#L1).
 The current official mainnet contract is `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`.
+
+## Confidence And Vesting
+
+If you want higher investor confidence without altering holder balances manually,
+lock sensitive allocations behind transparent vesting or timelock custody instead
+of informal promises.
+
+Recommended custody plan for the current category wallets is in:
+
+```bash
+vesting.recommended.json
+```
+
+Recommended direction:
+
+- treasury reserve: gradual release over `730` days with a published spending policy
+- ecosystem growth: gradual release over `730` days
+- team core contributors: start after `2027-04-12T00:00:00Z`, then `1095` days of linear vesting
+- future liquidity: `0`-day duration with a future start date to act as a timelock
+- marketing partnerships: gradual release over `365` days
+
+Deploy a vesting wallet:
+
+```bash
+npm run deploy-vesting -- 0xBeneficiaryAddress 2027-04-12T00:00:00Z 1095 150000
+```
+
+Check vesting wallet status:
+
+```bash
+npm run vesting-status -- 0xVestingWalletAddress
+```
+
+Release vested KPL:
+
+```bash
+npm run release-vested -- 0xVestingWalletAddress
+```
+
+Automate the full vesting rollout from [vesting.recommended.json](/home/el3aw/kingpulse/vesting.recommended.json#L1):
+
+```bash
+npm run vesting-batch
+```
+
+That runs in dry-run mode by default. It checks:
+
+- the current holder balance for each category
+- whether the category-specific signer key env var is present
+- whether the signer key matches the current holder address
+
+For live execution, set these env vars in `.env` first:
+
+- `TREASURY_PRIVATE_KEY`
+- `ECOSYSTEM_PRIVATE_KEY`
+- `TEAM_PRIVATE_KEY`
+- `FUTURE_LIQUIDITY_PRIVATE_KEY`
+- `MARKETING_PRIVATE_KEY`
+
+Then run:
+
+```bash
+npm run vesting-batch -- --execute
+```
+
+Successful live runs write deployed vesting wallet addresses to:
+
+```bash
+vesting.batch.results.log
+```
 
 ## Token Info And Balance Commands
 
 Token metadata and status:
 
 ```bash
-npm run token-info:monad
+npm run token-info
 ```
 
 KPL balance:
 
 ```bash
-npm run balance:monad -- 0xWalletAddress
+npm run balance -- 0xWalletAddress
 ```
 
 Native MON balance:
 
 ```bash
-npm run native-balance:monad -- 0xWalletAddress
+npm run native-balance -- 0xWalletAddress
 ```
 
 Allowance:
 
 ```bash
-npm run allowance:monad -- 0xOwnerAddress 0xSpenderAddress
+npm run allowance -- 0xOwnerAddress 0xSpenderAddress
 ```
 
 ## Admin Commands
@@ -201,37 +299,37 @@ npm run allowance:monad -- 0xOwnerAddress 0xSpenderAddress
 Mint:
 
 ```bash
-npm run mint:monad -- 0xRecipientAddress 100
+npm run mint -- 0xRecipientAddress 100
 ```
 
 Transfer:
 
 ```bash
-npm run transfer:monad -- 0xRecipientAddress 25
+npm run transfer -- 0xRecipientAddress 25
 ```
 
 Approve:
 
 ```bash
-npm run approve:monad -- 0xSpenderAddress 50
+npm run approve -- 0xSpenderAddress 50
 ```
 
 Burn:
 
 ```bash
-npm run burn:monad -- 10
+npm run burn -- 10
 ```
 
 Pause:
 
 ```bash
-npm run pause:monad
+npm run pause
 ```
 
 Unpause:
 
 ```bash
-npm run unpause:monad
+npm run unpause
 ```
 
 ## Spender Commands
@@ -239,33 +337,25 @@ npm run unpause:monad
 Transfer from operator wallet:
 
 ```bash
-npm run transfer:monad:operator -- 0xRecipientAddress 5
+npm run transfer:mainnet:operator -- 0xRecipientAddress 5
 ```
 
 Approve from operator wallet:
 
 ```bash
-npm run approve:monad:operator -- 0xAnotherSpender 10
+npm run approve:mainnet:operator -- 0xAnotherSpender 10
 ```
 
 Burn from operator wallet:
 
 ```bash
-npm run burn:monad:operator -- 2
+npm run burn:mainnet:operator -- 2
 ```
 
 Burn from owner balance using allowance:
 
 ```bash
-npm run burn-from:monad -- 0xOwnerAddress 10
-```
-
-Mainnet aliases exist for the same flows, for example:
-
-```bash
-npm run whoami:monad:mainnet:admin
-npm run token-info:monad:mainnet
-npm run native-balance:monad:mainnet -- 0xWalletAddress
+npm run burn-from -- 0xOwnerAddress 10
 ```
 
 ## Frontend
@@ -273,7 +363,7 @@ npm run native-balance:monad:mainnet -- 0xWalletAddress
 Start the local frontend server:
 
 ```bash
-npm run frontend:monad
+npm run frontend
 ```
 
 Then open:
@@ -308,7 +398,7 @@ Recommended flow:
 5. Confirm the result with:
 
 ```bash
-npm run allowance:monad -- 0xOwnerAddress 0xSpenderAddress
+npm run allowance -- 0xOwnerAddress 0xSpenderAddress
 ```
 
 ## Security Notes

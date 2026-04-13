@@ -1,0 +1,41 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+  <rect x="34" y="34" width="444" height="444" rx="110" stroke="url(#frame)" stroke-width="12" opacity="0.72"/>
+
+  <g filter="url(#glow)">
+    <path d="M114 323H158L184 291L212 338L246 236L280 309L304 277H398" stroke="#67F0D2" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <path d="M144 151L186 106L228 151H196L223 190H176L203 151H144Z" fill="#FFD166"/>
+  <path d="M284 151L326 106L368 151H336L363 190H316L343 151H284Z" fill="#FFD166"/>
+  <path d="M214 130L256 80L298 130H267L294 176H218L245 130H214Z" fill="#FFF1B8"/>
+
+  <path d="M135 138H198V236L285 138H366L271 243L374 382H295L224 286L198 311V382H135V138Z" fill="white"/>
+  <path d="M135 138H198V236L285 138H366L271 243L374 382H295L224 286L198 311V382H135V138Z" fill="url(#shine)" fill-opacity="0.2"/>
+
+  <circle cx="386" cy="119" r="28" fill="#0E2633"/>
+  <circle cx="386" cy="119" r="23" stroke="#67F0D2" stroke-width="3" opacity="0.8"/>
+  <path d="M377 119H385L390 111L395 127L400 119H409" stroke="#67F0D2" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <defs>
+    <linearGradient id="bg" x1="66" y1="52" x2="448" y2="471" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#09131B"/>
+      <stop offset="0.42" stop-color="#102B3B"/>
+      <stop offset="1" stop-color="#0C6A73"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="74" y1="60" x2="430" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1B8"/>
+      <stop offset="0.48" stop-color="#67F0D2"/>
+      <stop offset="1" stop-color="#9EF5FF"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="164" y1="155" x2="337" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD166"/>
+      <stop offset="1" stop-color="#67F0D2"/>
+    </linearGradient>
+    <filter id="glow" x="90" y="212" width="332" height="150" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="6" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+  </defs>
+</svg>

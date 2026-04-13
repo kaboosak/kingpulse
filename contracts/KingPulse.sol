@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity >=0.8.20 <0.9.0;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -9,7 +9,7 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol
 
 /// @title KingPulse
 /// @notice Production-ready ERC20 token with permit, owner-controlled minting, user burning, and transfer pausing.
-/// @dev Built for Solidity ^0.8.20 using current OpenZeppelin contract patterns and Etherscan-friendly imports.
+/// @dev Supports a current 0.8.34 build and a legacy 0.8.28 verification profile.
 contract KingPulse is ERC20, ERC20Permit, Ownable, Pausable, ReentrancyGuard {
     uint256 public constant INITIAL_SUPPLY = 1_000_000 * 10 ** 18;
 
