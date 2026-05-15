@@ -1,0 +1,259 @@
+{
+  "generatedAt": "2026-05-14T20:03:43.202Z",
+  "sourcePlan": "/home/el3aw/kingpulse/vesting.execution-ready.remaining.json",
+  "entryCount": 25,
+  "totalSourceAmount": "24479.88455229202832582",
+  "targetBurnAmount": "17135.919186604419828074",
+  "entries": [
+    {
+      "category": "controlled_holder_01",
+      "current_holder": "0xAd129F4B5d527E1f08014e217eCaD4C1BF567B3d",
+      "beneficiary": "0xAd129F4B5d527E1f08014e217eCaD4C1BF567B3d",
+      "holderAmount": "4669.736596813372402936",
+      "burnAmount": "3268.815617769360682055",
+      "retainedAmount": "1400.920979044011720881",
+      "signerKeyEnv": "CONTROLLED_HOLDER_01_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_02",
+      "current_holder": "0x08989f8699c07dA7104c323961cca67fa34611B0",
+      "beneficiary": "0x08989f8699c07dA7104c323961cca67fa34611B0",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_02_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_03",
+      "current_holder": "0x0bf7f610c921a6d2811A6E146Fba4C906e349593",
+      "beneficiary": "0x0bf7f610c921a6d2811A6E146Fba4C906e349593",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_03_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_04",
+      "current_holder": "0x10f5a7d48D7F6DD1c7d3385105523bffF375Bc7a",
+      "beneficiary": "0x10f5a7d48D7F6DD1c7d3385105523bffF375Bc7a",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_04_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_05",
+      "current_holder": "0x137b241ddE0Fb860Dd6f5141bC6EbB3B88304f9B",
+      "beneficiary": "0x137b241ddE0Fb860Dd6f5141bC6EbB3B88304f9B",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_05_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_06",
+      "current_holder": "0x3279888bf3496dfA26249A685FC88D02c9FAAee1",
+      "beneficiary": "0x3279888bf3496dfA26249A685FC88D02c9FAAee1",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_06_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_07",
+      "current_holder": "0x37EA11AD7aF8DbBAc8A52c5FF721886589fCbe7B",
+      "beneficiary": "0x37EA11AD7aF8DbBAc8A52c5FF721886589fCbe7B",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_07_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_08",
+      "current_holder": "0x45accb5A0F7508626D69A894E182b3707aDf21D7",
+      "beneficiary": "0x45accb5A0F7508626D69A894E182b3707aDf21D7",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_08_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_09",
+      "current_holder": "0x4f1FC085BE26A1f3E06143D8826a4C5DBD6D5700",
+      "beneficiary": "0x4f1FC085BE26A1f3E06143D8826a4C5DBD6D5700",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_09_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_10",
+      "current_holder": "0x7fE5CAcE3FF1d614F453511fd7cD40DC90E45fE2",
+      "beneficiary": "0x7fE5CAcE3FF1d614F453511fd7cD40DC90E45fE2",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_10_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_11",
+      "current_holder": "0x8421ae83b42ca0eb965b5C171fd561f35e470309",
+      "beneficiary": "0x8421ae83b42ca0eb965b5C171fd561f35e470309",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_11_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_12",
+      "current_holder": "0x864529e8fF1c53ce16aD64a07128BFF4cfE15302",
+      "beneficiary": "0x864529e8fF1c53ce16aD64a07128BFF4cfE15302",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_12_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_13",
+      "current_holder": "0x91FD491b803320e7A702810fc79F0Ea32564ce13",
+      "beneficiary": "0x91FD491b803320e7A702810fc79F0Ea32564ce13",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_13_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_14",
+      "current_holder": "0x954D3679bEf2b7C973930a1AD44d4c9CC5342571",
+      "beneficiary": "0x954D3679bEf2b7C973930a1AD44d4c9CC5342571",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_14_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_15",
+      "current_holder": "0x9b8f6FeC5f6a3A49d49BD8738f4Fc9FDA40A4E49",
+      "beneficiary": "0x9b8f6FeC5f6a3A49d49BD8738f4Fc9FDA40A4E49",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_15_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_16",
+      "current_holder": "0xe092f5f167DBF7c5cF19b3e90397D9416278cA36",
+      "beneficiary": "0xe092f5f167DBF7c5cF19b3e90397D9416278cA36",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_16_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_17",
+      "current_holder": "0xe7366d934C997Fc71D0a0E5dCB4445897Bb99cb9",
+      "beneficiary": "0xe7366d934C997Fc71D0a0E5dCB4445897Bb99cb9",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_17_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_18",
+      "current_holder": "0xf8EC42552d20bb31750F03404e017899eF07cefC",
+      "beneficiary": "0xf8EC42552d20bb31750F03404e017899eF07cefC",
+      "holderAmount": "1000.0",
+      "burnAmount": "700.0",
+      "retainedAmount": "300.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_18_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_19",
+      "current_holder": "0xF82D6aa19B2683549EDB276A1745E7038B3Fc86B",
+      "beneficiary": "0xF82D6aa19B2683549EDB276A1745E7038B3Fc86B",
+      "holderAmount": "833.398160364854800124",
+      "burnAmount": "583.378712255398360087",
+      "retainedAmount": "250.019448109456440037",
+      "signerKeyEnv": "CONTROLLED_HOLDER_19_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_20",
+      "current_holder": "0x791e90b9C59368320968332869A0B953071416E0",
+      "beneficiary": "0x791e90b9C59368320968332869A0B953071416E0",
+      "holderAmount": "700.0",
+      "burnAmount": "490.0",
+      "retainedAmount": "210.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_20_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_21",
+      "current_holder": "0x4ACb6C4321253548a7d4Bb9C84032Cc4eE04bFD7",
+      "beneficiary": "0x4ACb6C4321253548a7d4Bb9C84032Cc4eE04bFD7",
+      "holderAmount": "326.381561235450458769",
+      "burnAmount": "228.467092864815321138",
+      "retainedAmount": "97.914468370635137631",
+      "signerKeyEnv": "CONTROLLED_HOLDER_21_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_22",
+      "current_holder": "0xC1dFc985b333B5e87CFdE366D4e95e8CE6E57136",
+      "beneficiary": "0xC1dFc985b333B5e87CFdE366D4e95e8CE6E57136",
+      "holderAmount": "300.0",
+      "burnAmount": "210.0",
+      "retainedAmount": "90.0",
+      "signerKeyEnv": "CONTROLLED_HOLDER_22_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_23",
+      "current_holder": "0x54d880671C2ce1C1Cc79DA338DA691B6e46Fe645",
+      "beneficiary": "0x54d880671C2ce1C1Cc79DA338DA691B6e46Fe645",
+      "holderAmount": "235.098589635366239067",
+      "burnAmount": "164.569012744756367347",
+      "retainedAmount": "70.52957689060987172",
+      "signerKeyEnv": "CONTROLLED_HOLDER_23_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_24",
+      "current_holder": "0xB747900083a4E7ecD2D1Da5407Ad3431a4D46388",
+      "beneficiary": "0xB747900083a4E7ecD2D1Da5407Ad3431a4D46388",
+      "holderAmount": "225.0",
+      "burnAmount": "157.5",
+      "retainedAmount": "67.5",
+      "signerKeyEnv": "CONTROLLED_HOLDER_24_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    },
+    {
+      "category": "controlled_holder_25",
+      "current_holder": "0x3125ccCc9018ad08DE59375C0aD57cE76264c1c5",
+      "beneficiary": "0x3125ccCc9018ad08DE59375C0aD57cE76264c1c5",
+      "holderAmount": "190.269644242984424924",
+      "burnAmount": "133.188750970089097447",
+      "retainedAmount": "57.080893272895327477",
+      "signerKeyEnv": "CONTROLLED_HOLDER_25_PRIVATE_KEY",
+      "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+    }
+  ]
+}

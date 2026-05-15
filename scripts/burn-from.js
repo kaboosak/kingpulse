@@ -17,6 +17,16 @@ async function main() {
   const { signer, contract, contractAddress } = await getContract();
   const owner = parseAddress(ownerInput, "owner");
   const amount = parseTokenAmount(amountInput);
+
+  if (owner.toLowerCase() === contractAddress.toLowerCase()) {
+    throw new Error(
+      [
+        "Cannot burn from the token contract address on this deployment.",
+        "The contract cannot approve allowance to external wallets, and no owner rescue or owner burn function exists for address(this).",
+      ].join(" ")
+    );
+  }
+
   const txRequest = await contract.burnFrom.populateTransaction(owner, amount);
 
   console.log(`Contract: ${contractAddress}`);

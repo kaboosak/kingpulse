@@ -1,163 +1,104 @@
 # KingPulse Tokenomics
 
-This document defines the current intended tokenomics model for KingPulse (`KPL`) on Monad Mainnet.
+This document defines the live post-migration token state for KingPulse (`KPL`) on Monad mainnet.
 
-It should be treated as a living operational document until ownership, treasury custody, and launch liquidity are finalized.
+It should be treated as the source of truth for supply, minting posture, and public launch assumptions until a later governance change replaces it.
 
 ## Official Mainnet Contract
 
 - Network: Monad Mainnet
 - Chain ID: `143`
-- Official contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- Official contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 - Token name: `KingPulse`
 - Symbol: `KPL`
 - Decimals: `18`
 
-## Total Supply
+## Live Supply State
 
-- Fixed initial supply at launch: `1,000,000 KPL`
-- Initial supply minted to treasury / distribution wallet at deployment
-- Current live on-chain total supply: `1,000,200 KPL`
-- Additional live supply above launch baseline: `200 KPL`
+Observed on `2026-05-14`:
 
-## Launch Pricing Model
+- Current live total supply: `27,510 KPL`
+- Current max supply: `27,510 KPL`
+- Current on-chain owner: `0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10`
+- Current paused state: `false`
+- Current `migrationFinalized()`: `true`
+- KPL held at the official token contract address: `0 KPL`
 
-Initial launch target:
+## Legacy Migration Source
 
-- Target price: approximately `$0.01` per `KPL`
-- Reference liquidity model: `5,000 MON + 10,845 KPL`
+- Legacy contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- Legacy total supply: `29,750 KPL`
+- Legacy KPL held at the token contract address: `2,240 KPL`
+- That legacy self-balance was retired in the replacement distribution and is not part of the official live supply.
 
-This launch model implies:
+Detailed migration execution is tracked in [MIGRATION_PLAN.md](/home/el3aw/kingpulse/MIGRATION_PLAN.md#L1).
 
-- Initial liquidity allocation: `10,845 KPL`
-- Initial liquidity allocation as percentage of total supply: `1.0845%`
-- Non-pooled supply after launch: `989,155 KPL`
+## Historical Planning Numbers
 
-The exact pool ratio should be recalculated immediately before adding liquidity to reflect the live market price of `MON`.
+- Older repo documents referred to `1,000,000 KPL` as an intended launch baseline.
+- Older repo documents also referred to `1,000,200 KPL` as a later reported live total.
+- Neither figure matches the current official mainnet contract.
+- Allocation tables derived from those numbers are historical planning material only.
 
-## Proposed Supply Allocation
+## Minting And Cap Policy
 
-The following allocation applies to the original `989,155 KPL` that remained outside the initial launch pool:
+The official replacement contract was deployed with a hard cap and one-way migration close:
 
-| Category | KPL | Share of Total Supply |
-|---|---:|---:|
-| Initial liquidity | 10,845 | 1.0845% |
-| Treasury reserve | 500,000 | 50.0000% |
-| Ecosystem and growth | 200,000 | 20.0000% |
-| Team and core contributors | 150,000 | 15.0000% |
-| Future liquidity | 100,000 | 10.0000% |
-| Marketing and partnerships | 39,155 | 3.9155% |
+- `maxSupply = 27,510 KPL`
+- migration minting completed across `4` `mintBatch` transactions
+- `finalizeMigration()` has already been called
+- additional owner minting is therefore permanently closed on the official contract
 
-Original allocation total at launch:
+The replacement contract also includes owner-only `recoverContractBalance()` and `burnContractBalance()` helpers if KPL are ever sent to `address(this)` again.
 
-- `1,000,000 KPL`
+## Pause And Governance Policy
 
-Current live note:
+The official contract still supports owner-controlled pause and unpause actions.
 
-- The live contract now reports `1,000,200 KPL` total supply.
-- Public documentation should distinguish the original launch baseline from the current on-chain total.
+Recommended production policy:
 
-## Intended Role Model
+1. Use pause only for emergency response.
+2. Keep normal market operation unpaused.
+3. Transfer ownership to a multisig if `0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10` is not the intended long-term admin.
+4. Disclose any future owner action publicly.
 
-Current observed operational roles:
+## Liquidity And Treasury Planning
 
-- Official mainnet admin wallet:
-  - `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
-  - This wallet is the current on-chain `owner()`
-- Current treasury / distribution wallet:
-  - Reconfirm from live balances before public launch
-  - Do not assume treasury custody is separate from admin unless documented
+Any current liquidity or treasury plan must use the live `27,510 KPL` supply as its denominator.
 
-Target production model:
+Important consequences:
 
-- Admin ownership should move to a multisig
-- Treasury custody should remain operationally separate from admin control
-- Public communications should reference one official mainnet contract only
-
-## Admin and Governance Policy
-
-The contract currently supports owner-controlled administrative actions, including:
-
-- `mint`
-- `pause`
-- `unpause`
-- `transferOwnership`
-
-Production policy should be:
-
-1. Transfer ownership from the current admin wallet to a multisig
-2. Document who controls the multisig
-3. Record any future admin action publicly
-4. Avoid discretionary admin activity without public disclosure
-
-## Minting Policy
-
-The smart contract supports additional minting by the owner.
-
-This creates a trust-sensitive policy question that must be answered clearly before broad public launch.
-
-Recommended public policy options:
-
-1. Conservative policy:
-   - No additional minting beyond the original `1,000,000 KPL` launch baseline
-   - Mint function retained technically, but treated as unused in practice
-2. Controlled growth policy:
-   - Additional minting allowed only by multisig vote
-   - Any mint must be announced publicly with purpose and amount
-
-If no firm minting policy is published, the market should assume supply expansion risk exists.
-
-For the current official contract, supply expansion has already occurred by `200 KPL`, so public materials should disclose that explicitly.
-
-## Pause Policy
-
-The contract also supports pausing transfers via the owner.
-
-Recommended public policy:
-
-- Pause should be used only for emergency response
-- Normal market operation should remain unpaused
-- Any pause event should be disclosed publicly with reason and expected resolution path
-
-## Team and Treasury Handling
-
-Recommended production standards:
-
-- Team allocation should be subject to vesting or lockups
-- Treasury wallets should be documented internally
-- Marketing and partnership allocations should be tracked with purpose
-- Future liquidity allocation should be reserved for planned market depth expansion, not arbitrary distribution
+- The old `5,000 MON + 10,845 KPL` example from the `1,000,000 KPL` planning model is no longer a valid percentage reference.
+- The legacy `2,240 KPL` self-balance must not be counted as treasury, reserve, or deployable supply.
+- Treasury and launch custody wallets should be documented separately from admin control where practical.
 
 ## Launch Disclosure Checklist
 
-Before promoting KPL publicly, publish the following:
+Before broad public promotion, publish the following:
 
-1. Official mainnet contract address
-2. Official explorer link
-3. Final initial liquidity ratio
-4. Treasury policy
-5. Team allocation policy
-6. Minting policy
-7. Ownership and multisig policy
-8. Clear statement that older mainnet deployments are deprecated
-9. Clear statement that the live supply is `1,000,200 KPL`, not the original `1,000,000 KPL` baseline
+1. Official mainnet contract address and explorer link
+2. Current live total supply and max supply
+3. `migrationFinalized = true`
+4. Current owner / multisig policy
+5. Pause policy
+6. Clear statement that `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` is legacy and deprecated
+7. Clear statement that the legacy `2,240 KPL` self-balance was retired in migration
+8. Current liquidity and treasury policy based on `27,510 KPL`
 
 ## Risk Disclosures
 
 Users should understand the following:
 
-- The contract includes owner-controlled mint authority
-- The contract includes owner-controlled pause authority
-- Price discovery depends on liquidity depth and can be highly volatile at launch
-- Thin liquidity can produce severe slippage and price manipulation risk
-- Multiple older mainnet deployments exist and must not be confused with the official contract
+- The contract owner still retains pause authority.
+- The current owner is `0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10` until ownership is transferred.
+- Multiple older mainnet deployments exist and must not be confused with the official contract.
+- Archived tokenomics or liquidity notes derived from `1,000,000 KPL` are historical and not current.
 
 ## Current Recommendation
 
-For a credible public launch:
+For a credible public launch or ongoing operation:
 
-1. Keep `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` as the only official mainnet contract
-2. Launch with the deeper reference pool of `5,000 MON + 10,845 KPL`
-3. Transfer ownership to a multisig before broad promotion
-4. Publish this tokenomics policy together with the operational runbook and official contract address
-5. Explicitly disclose that the live supply is `1,000,200 KPL`
+1. Keep `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` as the only official mainnet contract.
+2. Transfer ownership if the current deployer wallet is not the intended long-term admin.
+3. Recalculate liquidity and public communications against the live `27,510 KPL` supply.
+4. Keep `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` and all older deployments clearly marked deprecated.

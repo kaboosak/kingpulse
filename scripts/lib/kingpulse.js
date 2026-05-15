@@ -24,6 +24,23 @@ function getContractAddress(networkName) {
   return contractAddress;
 }
 
+function getMigrationContractAddress() {
+  const contractAddress =
+    process.env.KINGPULSE_MIGRATION_ADDRESS ||
+    process.env.KINGPULSE_REPLACEMENT_ADDRESS;
+
+  if (!contractAddress) {
+    throw new Error(
+      [
+        "Set KINGPULSE_MIGRATION_ADDRESS in .env to your deployed replacement token address.",
+        "KINGPULSE_REPLACEMENT_ADDRESS is still accepted as a compatibility fallback.",
+      ].join(" ")
+    );
+  }
+
+  return contractAddress;
+}
+
 function getSignerRole() {
   return process.env.KINGPULSE_SIGNER || "admin";
 }
@@ -115,6 +132,30 @@ async function getContract() {
   return { connection, signer, contract, contractAddress, ethers, networkName };
 }
 
+async function getMigrationReadOnlyContract() {
+  const connection = await network.connect();
+  const { ethers, networkName } = connection;
+  const contractAddress = getMigrationContractAddress(networkName);
+  const contract = await ethers.getContractAt(
+    "KingPulseMigrationToken",
+    contractAddress
+  );
+
+  return { connection, contract, contractAddress, ethers, networkName };
+}
+
+async function getMigrationContract() {
+  const { connection, ethers, networkName, signer } = await getSigner();
+  const contractAddress = getMigrationContractAddress(networkName);
+  const contract = await ethers.getContractAt(
+    "KingPulseMigrationToken",
+    contractAddress,
+    signer
+  );
+
+  return { connection, signer, contract, contractAddress, ethers, networkName };
+}
+
 function parseTokenAmount(value) {
   if (!value) {
     throw new Error("Token amount is required.");
@@ -188,7 +229,12 @@ async function sendContractTransaction(signer, txRequest) {
 export {
   formatTokenAmount,
   getContract,
+  getContractAddress,
+  getMigrationContract,
+  getMigrationReadOnlyContract,
+  getSigner,
   getReadOnlyContract,
+  getTransactionOverrides,
   parseAddress,
   parseTokenAmount,
   sendContractTransaction,

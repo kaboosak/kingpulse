@@ -26,7 +26,7 @@ const runtimeConfig = {
       : process.env.MONAD_MAINNET_RPC_URL
         ? [process.env.MONAD_MAINNET_RPC_URL]
         : [],
-    explorerBaseUrl: "https://monadscan.com",
+    explorerBaseUrl: "https://monadvision.com",
   },
   contractAddress:
     process.env.KINGPULSE_MAINNET_ADDRESS ||

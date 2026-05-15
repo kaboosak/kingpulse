@@ -1,53 +1,38 @@
 # KingPulse Operations
 
-This document records the current operational state for KingPulse and should be updated whenever production ownership, treasury, or official contract status changes.
+This document records the live operational state for the KingPulse contract currently used by this repo on Monad mainnet and should be updated whenever the selected contract, owner, or public launch posture changes.
 
-## Official Mainnet Contract
+## Mainnet Contract In Use
 
 - Network: Monad Mainnet
 - Chain ID: `143`
-- Official contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Explorer: `https://monadscan.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c#code`
+- Contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- Explorer: `https://monadscan.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- Current on-chain `owner()`: `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
 
-## Current Role Model
+## Current Contract State
 
-Current observed mainnet state:
+Observed on `2026-05-15`:
 
-- Live total supply:
-  - `1,000,200 KPL`
-  - This is `200 KPL` above the original `1,000,000 KPL` baseline
+- Live total supply: `29,750 KPL`
+- Externally held supply: `27,510 KPL`
+- KPL held at the token contract address itself: `2,240 KPL`
+- `paused()`: `false`
+- Stranded contract-held KPL should not be treated as spendable holder balance
 
-- Admin wallet:
-  - `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
-  - This wallet is the current on-chain `owner()`
-  - This wallet controls owner-only functions:
-    - `mint`
-    - `pause`
-    - `unpause`
-    - `transferOwnership`
+## Replacement Contract Reference
 
-- Operator / treasury-distribution wallet:
-  - Reconfirm separately from `.env` and current mainnet balances
-  - Do not assume it differs from the admin wallet without verifying
+- Contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- `owner()` at reference check time: `0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10`
+- Total supply at reference check time: `27,510 KPL`
+- Contract-held KPL at reference check time: `0 KPL`
 
-## Ownership Policy
+## Operational Priorities
 
-Recommended production policy:
-
-1. The official mainnet contract must be the only contract publicly promoted.
-2. The on-chain owner should be transferred to a multisig as soon as practical.
-3. The wallet holding the token supply should be treated as treasury/distribution custody.
-4. Admin and treasury should remain logically separate unless there is a deliberate reason to combine them.
-
-## Immediate Priority
-
-If KPL is intended to remain a live production token:
-
-1. Finalize the official mainnet contract as:
-   - `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-2. Move owner/admin control to a multisig
-3. Publish the official address everywhere
-4. Mark older mainnet deployments as deprecated
+1. Keep `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` in repo defaults, explorer links, and operator workflows.
+2. Transfer ownership if `0x27c97c377f43e73b1F62b317E3499B510e5a0C95` is not the intended long-term admin or multisig.
+3. Do not count the contract-held `2,240 KPL` as spendable treasury or holder balance.
+4. Recalculate liquidity, treasury, and launch planning against the live `29,750 KPL` total supply and `27,510 KPL` externally held supply.
 
 ## Ownership Transfer Command
 
@@ -66,10 +51,22 @@ npm run token-info
 
 ## Verification Commands
 
-Check official mainnet contract info:
+Check the current repo-default contract info:
 
 ```bash
 npm run token-info
+```
+
+Check the replacement-contract migration status:
+
+```bash
+KINGPULSE_MIGRATION_ADDRESS=0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369 npm run migration:status
+```
+
+Check the retired legacy contract-held balance:
+
+```bash
+npm run balance -- 0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c
 ```
 
 Check the admin signer currently configured in `.env`:
@@ -84,16 +81,16 @@ Check the operator signer currently configured in `.env`:
 npm run whoami:operator
 ```
 
-Check treasury balance:
+## Migration Reference
 
-```bash
-npm run balance -- 0x27c97c377f43e73b1F62b317E3499B510e5a0C95
-```
+- Completed migration record: [MIGRATION_PLAN.md](/home/el3aw/kingpulse/MIGRATION_PLAN.md#L1)
+- Snapshot and batch artifacts: `distribution.migration.snapshot.json`, `distribution.migration.snapshot.summary.json`, `distribution.migration.batches.json`, `distribution.migration.batches.summary.json`
 
 ## Deprecated Mainnet Deployments
 
 The following mainnet KingPulse deployments should be treated as non-official unless explicitly re-designated:
 
+- `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
 - `0xBC51Ff6E0e03d13B7C9c9916c931Ce69589c0F54`
 - `0xd03f87cba1066afC456ca30cB76E368c18177691`
 - `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
@@ -103,7 +100,7 @@ The following mainnet KingPulse deployments should be treated as non-official un
 - `0x0E97181313Ca0a12cF77b88487890083D0871Ae5`
 - `0xDA10484028100F02dcC88Fe147991059001AF273`
 
-Only one mainnet contract should be presented as the official KPL token at any time.
+Only one mainnet contract should be presented as the active KPL token at any time.
 
 ## Security Notes
 
@@ -111,3 +108,4 @@ Only one mainnet contract should be presented as the official KPL token at any t
 - If any production private key is exposed, treat it as compromised.
 - Rotate compromised keys immediately.
 - Re-check `owner()` on-chain after any ownership transfer.
+- Do not count the contract-held `2,240 KPL` as spendable supply.

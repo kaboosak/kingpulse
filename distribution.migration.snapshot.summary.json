@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-05-14T12:57:20.079Z",
+  "contract": "0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c",
+  "token": {
+    "name": "KingPulse",
+    "symbol": "KPL",
+    "decimals": 18
+  },
+  "snapshot": {
+    "fromBlock": 0,
+    "toBlock": 74540419,
+    "latestBlockObserved": 74540419,
+    "chunkSize": 50000,
+    "sourceRequested": "auto",
+    "sourceResolved": "etherscan",
+    "explorerBaseUrl": "https://monadscan.com",
+    "etherscanApiUrl": "https://api.etherscan.io/v2/api",
+    "chainId": 143
+  },
+  "owner": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+  "paused": false,
+  "totalSupply": "29750.0",
+  "contractSelfBalance": "2240.0",
+  "excludedSupply": "2240.0",
+  "includedSupply": "27510.0",
+  "holderCount": 156,
+  "participantCandidates": 269,
+  "nonZeroHoldersObserved": 157,
+  "contractSelfBalancePolicy": "excluded from replacement distribution",
+  "excludedAddresses": [
+    "0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c"
+  ],
+  "distributionFile": "distribution.migration.snapshot.json"
+}

@@ -1,0 +1,626 @@
+[
+  {
+    "recipient": "0xAd129F4B5d527E1f08014e217eCaD4C1BF567B3d",
+    "amount": "4669.736596813372402936"
+  },
+  {
+    "recipient": "0x08989f8699c07dA7104c323961cca67fa34611B0",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x0bf7f610c921a6d2811A6E146Fba4C906e349593",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x10f5a7d48D7F6DD1c7d3385105523bffF375Bc7a",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x137b241ddE0Fb860Dd6f5141bC6EbB3B88304f9B",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x3279888bf3496dfA26249A685FC88D02c9FAAee1",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x37EA11AD7aF8DbBAc8A52c5FF721886589fCbe7B",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x45accb5A0F7508626D69A894E182b3707aDf21D7",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x4f1FC085BE26A1f3E06143D8826a4C5DBD6D5700",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x7fE5CAcE3FF1d614F453511fd7cD40DC90E45fE2",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x8421ae83b42ca0eb965b5C171fd561f35e470309",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x864529e8fF1c53ce16aD64a07128BFF4cfE15302",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x91FD491b803320e7A702810fc79F0Ea32564ce13",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x954D3679bEf2b7C973930a1AD44d4c9CC5342571",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0x9b8f6FeC5f6a3A49d49BD8738f4Fc9FDA40A4E49",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0xe092f5f167DBF7c5cF19b3e90397D9416278cA36",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0xe7366d934C997Fc71D0a0E5dCB4445897Bb99cb9",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0xf8EC42552d20bb31750F03404e017899eF07cefC",
+    "amount": "1000.0"
+  },
+  {
+    "recipient": "0xF82D6aa19B2683549EDB276A1745E7038B3Fc86B",
+    "amount": "833.398160364854800124"
+  },
+  {
+    "recipient": "0x791e90b9C59368320968332869A0B953071416E0",
+    "amount": "700.0"
+  },
+  {
+    "recipient": "0x4ACb6C4321253548a7d4Bb9C84032Cc4eE04bFD7",
+    "amount": "326.381561235450458769"
+  },
+  {
+    "recipient": "0xC1dFc985b333B5e87CFdE366D4e95e8CE6E57136",
+    "amount": "300.0"
+  },
+  {
+    "recipient": "0x54d880671C2ce1C1Cc79DA338DA691B6e46Fe645",
+    "amount": "235.098589635366239067"
+  },
+  {
+    "recipient": "0xB747900083a4E7ecD2D1Da5407Ad3431a4D46388",
+    "amount": "225.0"
+  },
+  {
+    "recipient": "0x3125ccCc9018ad08DE59375C0aD57cE76264c1c5",
+    "amount": "190.269644242984424924"
+  },
+  {
+    "recipient": "0x966B98874e1f832b7f6BaDA20038E90e25DD7c9E",
+    "amount": "185.885383544537750244"
+  },
+  {
+    "recipient": "0x354a07749f158A08D9084508229FF61a47a1bA75",
+    "amount": "164.908710669071531482"
+  },
+  {
+    "recipient": "0xac977458870Cf63424220AD01284cd062CD09069",
+    "amount": "147.560429269679092673"
+  },
+  {
+    "recipient": "0x455C544909BbDB1a25924939677390Ea63416522",
+    "amount": "147.0"
+  },
+  {
+    "recipient": "0x53d126e501e4E80055Bff171dafFFD1088a3785b",
+    "amount": "139.0"
+  },
+  {
+    "recipient": "0xA7FCDd9B7943feF3bCA923A0D963E26C5BB51357",
+    "amount": "104.000007625341053306"
+  },
+  {
+    "recipient": "0x29300386ad396483c1498DFd14d6F3fbbEA35cB2",
+    "amount": "100.0"
+  },
+  {
+    "recipient": "0xBC51Ff6E0e03d13B7C9c9916c931Ce69589c0F54",
+    "amount": "100.0"
+  },
+  {
+    "recipient": "0xF80A8F0e518aFA06753A79DED423bAB3c8770bA0",
+    "amount": "95.67263753020413702"
+  },
+  {
+    "recipient": "0x082da55014703B5FB644f0c0de7b0e132e81188a",
+    "amount": "95.0"
+  },
+  {
+    "recipient": "0x800EB64174F5986669752d2E121a58435F5abB9A",
+    "amount": "84.933906701167912165"
+  },
+  {
+    "recipient": "0x303Ad90E05C8F46EC87B0DD5B113C9224E8b8182",
+    "amount": "83.900104792637983626"
+  },
+  {
+    "recipient": "0x17C33dB369B0BcAcEc40115f5D1665f43fF70361",
+    "amount": "77.328652332880517632"
+  },
+  {
+    "recipient": "0xb97cBA6a0BE59E54bd0D079A8aaC8941483Ed678",
+    "amount": "72.5"
+  },
+  {
+    "recipient": "0x903f9c50540242b3Ee257c212447EE117B5DdCeC",
+    "amount": "71.064321105285277257"
+  },
+  {
+    "recipient": "0xDe68B39F0023e52aeDe9448aEc4a3B2aa4bdd0E0",
+    "amount": "68.173324469412224779"
+  },
+  {
+    "recipient": "0x9211aF55391a3f4dF40133a27D4B09ACD9731Cff",
+    "amount": "64.524280592627062722"
+  },
+  {
+    "recipient": "0x1d6A6b4CE037d9589eA6381049F1146c8AEe9E79",
+    "amount": "62.0"
+  },
+  {
+    "recipient": "0xB94cD15c7f0bf140E9D7C03230f6EB1FBe743C5c",
+    "amount": "62.0"
+  },
+  {
+    "recipient": "0x032b94e50114F35C19abf1DDA5ca50E75EcEFd15",
+    "amount": "50.0"
+  },
+  {
+    "recipient": "0x366f725370Fa789528a1144DfEDc1B553cb00E11",
+    "amount": "50.0"
+  },
+  {
+    "recipient": "0x744CB9c73DEc44194073BF0aFf674619F061ac39",
+    "amount": "50.0"
+  },
+  {
+    "recipient": "0x0002604E05495Eb5AD1cA8145816F3602c12637D",
+    "amount": "48.0"
+  },
+  {
+    "recipient": "0xd0917FCE91F023526514EB69af243cF960c6126B",
+    "amount": "46.611991416543765183"
+  },
+  {
+    "recipient": "0x13c722FdE6FEeB246BF15A283c5539678423316c",
+    "amount": "39.26227"
+  },
+  {
+    "recipient": "0x181e7daEd78447373751a08C6577e08AEAf3BEf4",
+    "amount": "39.0"
+  },
+  {
+    "recipient": "0x85B3DbDd3eCB55d3859A2DB973642A57F1c88Fe5",
+    "amount": "37.0"
+  },
+  {
+    "recipient": "0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10",
+    "amount": "35.441280728647190857"
+  },
+  {
+    "recipient": "0x330fccDcc5360ffE8a35D516fd022c22633285Ea",
+    "amount": "35.148534040780626171"
+  },
+  {
+    "recipient": "0xe1a3C8d7dC294Ac1202728f8e8c1308CFf2cAdBc",
+    "amount": "35.0"
+  },
+  {
+    "recipient": "0xEFaC46Cb2D32322d64B361432628c301667B038f",
+    "amount": "32.656431175793097215"
+  },
+  {
+    "recipient": "0xC5D08B2C4B11419E50bb1C7031C7f66B7Ee0B9e6",
+    "amount": "30.0"
+  },
+  {
+    "recipient": "0x5a6DA9337312b80b0C6E950601F4638c327237bF",
+    "amount": "22.0"
+  },
+  {
+    "recipient": "0xAEc5c0E65121cc9FD10f6B568E0830212D788447",
+    "amount": "22.0"
+  },
+  {
+    "recipient": "0x07AAE9799B555A71b160241f0442c4eB8aa255c9",
+    "amount": "20.0"
+  },
+  {
+    "recipient": "0x884203D934D5C40625c58F45428C05113dFDf206",
+    "amount": "20.0"
+  },
+  {
+    "recipient": "0x0A958C9C55cd6F6FD7aC2d9623E2Eb3146Dd3545",
+    "amount": "15.552247126314065286"
+  },
+  {
+    "recipient": "0x2BaAaD95356c93d06efdE34E4ECf220452ADB2ef",
+    "amount": "15.0"
+  },
+  {
+    "recipient": "0x593495363e4a383d74a1788be7063B0F1EA0c1F9",
+    "amount": "15.0"
+  },
+  {
+    "recipient": "0x4621B3e8e59508d2aA772471cEa9cE7069E425c2",
+    "amount": "14.5"
+  },
+  {
+    "recipient": "0xb90c684C87badc131C4dc19cB8c8dE6d2Af55579",
+    "amount": "14.0"
+  },
+  {
+    "recipient": "0x64C216d551dFC0389e382539A95447ABA74ED62c",
+    "amount": "13.0"
+  },
+  {
+    "recipient": "0x782704CFf8B7BBf4ACA89f7c6B2B85eB0066318f",
+    "amount": "12.0"
+  },
+  {
+    "recipient": "0xB090E6284927A292088772765C81865D0f74EE7a",
+    "amount": "11.0"
+  },
+  {
+    "recipient": "0x8eeED7336029C506Ef856D7327DA96CBf9983293",
+    "amount": "10.297"
+  },
+  {
+    "recipient": "0x1112412aB9fdA12D830Dc6f69dDf52A1CEd47312",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x1B468d2762e52F6C32DEc62C24cd625D5158C624",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x23C7E216B331Cd40DA7405b689a02af0EdfeB0df",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x412b3d308ABbA78702FDa849E1F99bCdDD5A721D",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x419e1f92acA2d88465B0Bf21A97E031cc2b3Bf64",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x41C478ba49e887340E79b164aAD7d3b5d62BfFaf",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x493b35fdFf80FC1cD433e518933517073Ba11596",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x5E3266fab9f3071E81bB1A20D5904dDDbe079c47",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x6a502654504fABdA21F8953c697BD737690Ab6A7",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x778d4DE22b2AF35696Df4C8d881869ea5bB1e169",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x8402839209BBA87D2bE8221FAAc4aB0C842dCd40",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x840FC19571f6fEDD5bd25b995AEd84De468dB5AD",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x867561afB84978Efd1e5993E150541E808A20f7A",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x86b0b3dCFCe2434Bd6Ef5CA5ebb719Ef189D8fd3",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x8900754535a77177514D4b235A3a3F5977F3Dec2",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0x8ab4933357d7B787e56bB1568757D3C129B8a8b3",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0xb64A164A6aB2BD9ff5a10f854E996321B2098938",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0xE1C157A9B30c1E5B7010DDf2747bf2F54D0172bE",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0xE54d220E105F2560c94D97bC2F4d45CfF64570b5",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0xFc8877295DC569A9904A33E32c233D98F72aBE8A",
+    "amount": "10.0"
+  },
+  {
+    "recipient": "0xcA351C0ED5c80685fAFD4a26f8b21984a2004b45",
+    "amount": "9.0"
+  },
+  {
+    "recipient": "0x24B6f9bF797Accd876f82054B63D0936A1C76f14",
+    "amount": "8.0"
+  },
+  {
+    "recipient": "0x01e69be7Abfe80785726E74cF5F6062068878b8B",
+    "amount": "7.0"
+  },
+  {
+    "recipient": "0x0979228661ef376684E16B31aF793c5904D218a7",
+    "amount": "7.0"
+  },
+  {
+    "recipient": "0xCd101D34FB1Adf308aF1712Eb04316f48FEA74Da",
+    "amount": "6.801702295950136389"
+  },
+  {
+    "recipient": "0x12cb53154DA5E51AAC417f63FDAcf2C2039d33c2",
+    "amount": "6.0"
+  },
+  {
+    "recipient": "0x885493fE57991D4AAf905C509b1e61d6Dbf7c3d3",
+    "amount": "6.0"
+  },
+  {
+    "recipient": "0x0424Db197ff06A9a5996d2fD321b435250536ffc",
+    "amount": "5.0"
+  },
+  {
+    "recipient": "0x14d95A9D28c09C79688045EAEA035bfE606164d4",
+    "amount": "5.0"
+  },
+  {
+    "recipient": "0x417cE0EAe569B86976C5fEA2D9574e2EC4a493CC",
+    "amount": "5.0"
+  },
+  {
+    "recipient": "0x788f8597014D50E71979080289aa2dd3DA1127Db",
+    "amount": "5.0"
+  },
+  {
+    "recipient": "0x97693439EA2f0ecdeb9135881E49f354656a911c",
+    "amount": "5.0"
+  },
+  {
+    "recipient": "0xF572e6d393AD1c20912DB95b7cC3EF4995c30cAA",
+    "amount": "5.0"
+  },
+  {
+    "recipient": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+    "amount": "4.429397493272334449"
+  },
+  {
+    "recipient": "0x288131c645397B69022f109e4c25868089514a30",
+    "amount": "4.0"
+  },
+  {
+    "recipient": "0x3b479B5fcb8c35bee31263d80FC59b2ad91B07f9",
+    "amount": "4.0"
+  },
+  {
+    "recipient": "0x4D4cea0e4EeDa9ca50B3D9Ed2Efa6F58464d3A8B",
+    "amount": "4.0"
+  },
+  {
+    "recipient": "0x5B46B433F1d6c8B4e54B13B7237a2802B065E8ac",
+    "amount": "4.0"
+  },
+  {
+    "recipient": "0x89ECd99669CB2159Eeb57F3852846594700AC50C",
+    "amount": "4.0"
+  },
+  {
+    "recipient": "0xcf287263704C7aAf2Fe66F4f24f154628b741152",
+    "amount": "4.0"
+  },
+  {
+    "recipient": "0x07F8db6c5Ebf1869d103244B005637996f82B30D",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x0FbE5232Dc59Dd5F114dC53559686A7525A7541A",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x1A432DE78Ae451e6a684e76bd15499eC6f453A31",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x1C85115Ca6CF805A39387B29c780AbFFF0E74654",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x21f7B39Ef8a5c844a21D88203222e6B168CEd1E1",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x5235aA480eC7DD105BD89ee5400B7a1b99F91C08",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x55Fe63e06a709bDA26209372D4A65A3D708d83E6",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x6CA92835c0d98006B654bCbED365ce50D6c699d8",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x736D829aB99a1fef72D70902DA0EB9cc52B80b74",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x756920Fb530eE07edF58966322895bC4a697bA9E",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x7999FED560318eFd410607c454e793F266F9c956",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x853F0531B39A4F5208c03E0557027A034538D567",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x875a32B706D342A26ACd4E3fb3Bd5B37fE8D3dE5",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x8ffDcB0caBcCf2767366a2EBa6e2fdcc37baa1B2",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xA46A2a2F16b6d6d5db9931b04b9309D7187EfA97",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xae781e27e72616d22F886F9C565c11bD58DF1b6B",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xBF66Ba0c4A6127C9BC1ae770EB37E43399188B28",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xc709eAb88F53137B1dEFE8f131a5e69f9e44Db2d",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xC9Ab56cc7375F47f34cb7Ce9F6F2124DAd1a1135",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xE466e227386C3feE113463f06933dEaEFe132746",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xec76fabf1eC529BC991C6eF9BE632531926c6F3f",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xeD59946bbF6c71AbEbd781424576D977401957eC",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xf5c5D5dd046A0eB7821adEd02d5D544F5fbF433e",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xF64D220e855f77de9C601C854050B60985bF5864",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xF8400C96620Ee5BA4DBf66182a1c074Be8763e2A",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xF95DcC9DD8De925b090e72e9A7fccF1941C58C30",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0xfB25331b04Acac53473BAEFB539870B6B611a981",
+    "amount": "2.0"
+  },
+  {
+    "recipient": "0x8C26C92F51cAFB378D85b01F753823dF59F5bdC7",
+    "amount": "1.5"
+  },
+  {
+    "recipient": "0x7a6c0Dd208C13B4876407B17C6b85686a62bF054",
+    "amount": "1.0"
+  },
+  {
+    "recipient": "0x90747173c27968a47D3aFC3CfAE8845914102A02",
+    "amount": "1.0"
+  },
+  {
+    "recipient": "0xAC68b66966FC19bD9be2C9719E8200962D850011",
+    "amount": "1.0"
+  },
+  {
+    "recipient": "0xD75E2c4663268b246390e3c73e5aeAAB0a4c4946",
+    "amount": "1.0"
+  },
+  {
+    "recipient": "0xe120B63D73BeEF25da4816E78D5961Ef0c2E893f",
+    "amount": "1.0"
+  },
+  {
+    "recipient": "0xF65F85351a10E86b98b199fBC29c0a7e3290E522",
+    "amount": "1.0"
+  },
+  {
+    "recipient": "0x4f82e73EDb06d29Ff62C91EC8f5Ff06571bdeb29",
+    "amount": "0.899355603115809973"
+  },
+  {
+    "recipient": "0x2e197Ad43407360C11EA5231b2E9342812A4d504",
+    "amount": "0.5"
+  },
+  {
+    "recipient": "0xABcF170E233547057c6D218F1d648baF1c4FBc9E",
+    "amount": "0.5"
+  },
+  {
+    "recipient": "0x922164BBBd36Acf9E854AcBbF32faCC949fCAEef",
+    "amount": "0.332165966803767058"
+  },
+  {
+    "recipient": "0x7b539258661C6B642c2db727F8069Acf0686Bb2d",
+    "amount": "0.08"
+  },
+  {
+    "recipient": "0x8fe83dab1D17185f091569b440B9e3C7EAd1453d",
+    "amount": "0.051226476147570135"
+  },
+  {
+    "recipient": "0x8b1fb4937bAB5D02248a0825bF2564863237b00F",
+    "amount": "0.050201946624618731"
+  },
+  {
+    "recipient": "0x62eE1b8D1EFdF8f73c78dB87b888406b194e266a",
+    "amount": "0.0495"
+  },
+  {
+    "recipient": "0x453565bcb4c41cD2FDE20552DE25b2B67C486521",
+    "amount": "0.000384606467033581"
+  },
+  {
+    "recipient": "0xb341253A9225943E043422AC90E2AB51e7263E25",
+    "amount": "0.000000198667116244"
+  },
+  {
+    "recipient": "0x63242A4Ea82847b20E506b63B0e2e2eFF0CC6cB0",
+    "amount": "0.000000000000000001"
+  },
+  {
+    "recipient": "0x8F10B468b06c6FD214B65F87778827F7D113f996",
+    "amount": "0.000000000000000001"
+  }
+]

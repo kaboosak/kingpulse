@@ -1,0 +1,332 @@
+{
+  "generatedAt": "2026-05-14T16:33:00.289Z",
+  "distributionFile": "distribution.migration.snapshot.json",
+  "vestingPlanFile": "vesting.recommended.json",
+  "envFile": ".env",
+  "distribution": {
+    "recipientCount": 156,
+    "totalAmount": "27510.0",
+    "totalRawAmount": "27510000000000000000000"
+  },
+  "keyBackedAddresses": [
+    {
+      "address": "0x17C33dB369B0BcAcEc40115f5D1665f43fF70361",
+      "sources": [
+        "SPENDER_PRIVATE_KEY",
+        "ADMIN_PRIVATE_KEY"
+      ]
+    },
+    {
+      "address": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+      "sources": [
+        "PRIVATE_KEY",
+        "ECOSYSTEM_PRIVATE_KEY"
+      ]
+    },
+    {
+      "address": "0x303Ad90E05C8F46EC87B0DD5B113C9224E8b8182",
+      "sources": [
+        "MARKETING_PRIVATE_KEY"
+      ]
+    },
+    {
+      "address": "0x330fccDcc5360ffE8a35D516fd022c22633285Ea",
+      "sources": [
+        "TEAM_PRIVATE_KEY"
+      ]
+    },
+    {
+      "address": "0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10",
+      "sources": [
+        "OWNER_PRIVATE_KEY",
+        "OPERATOR_PRIVATE_KEY"
+      ]
+    },
+    {
+      "address": "0x366f725370Fa789528a1144DfEDc1B553cb00E11",
+      "sources": [
+        "FUTURE_LIQUIDITY_PRIVATE_KEY"
+      ]
+    },
+    {
+      "address": "0xCd101D34FB1Adf308aF1712Eb04316f48FEA74Da",
+      "sources": [
+        "TREASURY_PRIVATE_KEY"
+      ]
+    }
+  ],
+  "knownManualAddresses": [
+    "0x08989f8699c07dA7104c323961cca67fa34611B0",
+    "0x0bf7f610c921a6d2811A6E146Fba4C906e349593",
+    "0x10f5a7d48D7F6DD1c7d3385105523bffF375Bc7a",
+    "0x137b241ddE0Fb860Dd6f5141bC6EbB3B88304f9B",
+    "0x3125ccCc9018ad08DE59375C0aD57cE76264c1c5",
+    "0x3279888bf3496dfA26249A685FC88D02c9FAAee1",
+    "0x37EA11AD7aF8DbBAc8A52c5FF721886589fCbe7B",
+    "0x45accb5A0F7508626D69A894E182b3707aDf21D7",
+    "0x4ACb6C4321253548a7d4Bb9C84032Cc4eE04bFD7",
+    "0x4f1FC085BE26A1f3E06143D8826a4C5DBD6D5700",
+    "0x54d880671C2ce1C1Cc79DA338DA691B6e46Fe645",
+    "0x791e90b9C59368320968332869A0B953071416E0",
+    "0x7fE5CAcE3FF1d614F453511fd7cD40DC90E45fE2",
+    "0x8421ae83b42ca0eb965b5C171fd561f35e470309",
+    "0x864529e8fF1c53ce16aD64a07128BFF4cfE15302",
+    "0x91FD491b803320e7A702810fc79F0Ea32564ce13",
+    "0x954D3679bEf2b7C973930a1AD44d4c9CC5342571",
+    "0x9b8f6FeC5f6a3A49d49BD8738f4Fc9FDA40A4E49",
+    "0xAd129F4B5d527E1f08014e217eCaD4C1BF567B3d",
+    "0xB747900083a4E7ecD2D1Da5407Ad3431a4D46388",
+    "0xC1dFc985b333B5e87CFdE366D4e95e8CE6E57136",
+    "0xe092f5f167DBF7c5cF19b3e90397D9416278cA36",
+    "0xe7366d934C997Fc71D0a0E5dCB4445897Bb99cb9",
+    "0xF82D6aa19B2683549EDB276A1745E7038B3Fc86B",
+    "0xf8EC42552d20bb31750F03404e017899eF07cefC"
+  ],
+  "vestingPlan": {
+    "holderCount": 7,
+    "categoryCount": 7,
+    "totalAmount": "293.049671684168789124",
+    "totalRawAmount": "293049671684168789124"
+  },
+  "classification": {
+    "plannedHolderRecipientCount": 7,
+    "plannedHolderDistributionAmount": "293.049671684168789124",
+    "keyBackedOnlyRecipientCount": 0,
+    "keyBackedOnlyDistributionAmount": "0.0",
+    "knownManualRecipientCount": 25,
+    "knownManualDistributionAmount": "24479.88455229202832582",
+    "classifiedRecipientCount": 32,
+    "classifiedDistributionAmount": "24772.934223976197114944",
+    "classifiedDistributionPercent": "90.0506",
+    "unclassifiedRecipientCount": 124,
+    "unclassifiedDistributionAmount": "2737.065776023802885056",
+    "unclassifiedDistributionPercent": "9.9493"
+  },
+  "topUnclassified": [
+    {
+      "recipient": "0x966B98874e1f832b7f6BaDA20038E90e25DD7c9E",
+      "amount": "185.885383544537750244",
+      "rawAmount": "185885383544537750244",
+      "shareOfDistributionPercent": "0.6757",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x354a07749f158A08D9084508229FF61a47a1bA75",
+      "amount": "164.908710669071531482",
+      "rawAmount": "164908710669071531482",
+      "shareOfDistributionPercent": "0.5994",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xac977458870Cf63424220AD01284cd062CD09069",
+      "amount": "147.560429269679092673",
+      "rawAmount": "147560429269679092673",
+      "shareOfDistributionPercent": "0.5363",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x455C544909BbDB1a25924939677390Ea63416522",
+      "amount": "147.0",
+      "rawAmount": "147000000000000000000",
+      "shareOfDistributionPercent": "0.5343",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x53d126e501e4E80055Bff171dafFFD1088a3785b",
+      "amount": "139.0",
+      "rawAmount": "139000000000000000000",
+      "shareOfDistributionPercent": "0.5052",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xA7FCDd9B7943feF3bCA923A0D963E26C5BB51357",
+      "amount": "104.000007625341053306",
+      "rawAmount": "104000007625341053306",
+      "shareOfDistributionPercent": "0.378",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x29300386ad396483c1498DFd14d6F3fbbEA35cB2",
+      "amount": "100.0",
+      "rawAmount": "100000000000000000000",
+      "shareOfDistributionPercent": "0.3635",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xBC51Ff6E0e03d13B7C9c9916c931Ce69589c0F54",
+      "amount": "100.0",
+      "rawAmount": "100000000000000000000",
+      "shareOfDistributionPercent": "0.3635",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xF80A8F0e518aFA06753A79DED423bAB3c8770bA0",
+      "amount": "95.67263753020413702",
+      "rawAmount": "95672637530204137020",
+      "shareOfDistributionPercent": "0.3477",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x082da55014703B5FB644f0c0de7b0e132e81188a",
+      "amount": "95.0",
+      "rawAmount": "95000000000000000000",
+      "shareOfDistributionPercent": "0.3453",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x800EB64174F5986669752d2E121a58435F5abB9A",
+      "amount": "84.933906701167912165",
+      "rawAmount": "84933906701167912165",
+      "shareOfDistributionPercent": "0.3087",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xb97cBA6a0BE59E54bd0D079A8aaC8941483Ed678",
+      "amount": "72.5",
+      "rawAmount": "72500000000000000000",
+      "shareOfDistributionPercent": "0.2635",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x903f9c50540242b3Ee257c212447EE117B5DdCeC",
+      "amount": "71.064321105285277257",
+      "rawAmount": "71064321105285277257",
+      "shareOfDistributionPercent": "0.2583",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xDe68B39F0023e52aeDe9448aEc4a3B2aa4bdd0E0",
+      "amount": "68.173324469412224779",
+      "rawAmount": "68173324469412224779",
+      "shareOfDistributionPercent": "0.2478",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x9211aF55391a3f4dF40133a27D4B09ACD9731Cff",
+      "amount": "64.524280592627062722",
+      "rawAmount": "64524280592627062722",
+      "shareOfDistributionPercent": "0.2345",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x1d6A6b4CE037d9589eA6381049F1146c8AEe9E79",
+      "amount": "62.0",
+      "rawAmount": "62000000000000000000",
+      "shareOfDistributionPercent": "0.2253",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xB94cD15c7f0bf140E9D7C03230f6EB1FBe743C5c",
+      "amount": "62.0",
+      "rawAmount": "62000000000000000000",
+      "shareOfDistributionPercent": "0.2253",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x032b94e50114F35C19abf1DDA5ca50E75EcEFd15",
+      "amount": "50.0",
+      "rawAmount": "50000000000000000000",
+      "shareOfDistributionPercent": "0.1817",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x744CB9c73DEc44194073BF0aFf674619F061ac39",
+      "amount": "50.0",
+      "rawAmount": "50000000000000000000",
+      "shareOfDistributionPercent": "0.1817",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x0002604E05495Eb5AD1cA8145816F3602c12637D",
+      "amount": "48.0",
+      "rawAmount": "48000000000000000000",
+      "shareOfDistributionPercent": "0.1744",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xd0917FCE91F023526514EB69af243cF960c6126B",
+      "amount": "46.611991416543765183",
+      "rawAmount": "46611991416543765183",
+      "shareOfDistributionPercent": "0.1694",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x13c722FdE6FEeB246BF15A283c5539678423316c",
+      "amount": "39.26227",
+      "rawAmount": "39262270000000000000",
+      "shareOfDistributionPercent": "0.1427",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x181e7daEd78447373751a08C6577e08AEAf3BEf4",
+      "amount": "39.0",
+      "rawAmount": "39000000000000000000",
+      "shareOfDistributionPercent": "0.1417",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0x85B3DbDd3eCB55d3859A2DB973642A57F1c88Fe5",
+      "amount": "37.0",
+      "rawAmount": "37000000000000000000",
+      "shareOfDistributionPercent": "0.1344",
+      "reason": {
+        "type": "unclassified"
+      }
+    },
+    {
+      "recipient": "0xe1a3C8d7dC294Ac1202728f8e8c1308CFf2cAdBc",
+      "amount": "35.0",
+      "rawAmount": "35000000000000000000",
+      "shareOfDistributionPercent": "0.1272",
+      "reason": {
+        "type": "unclassified"
+      }
+    }
+  ]
+}

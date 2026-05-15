@@ -1,0 +1,322 @@
+[
+  {
+    "category": "owner_admin_reserve",
+    "current_holder": "0x17C33dB369B0BcAcEc40115f5D1665f43fF70361",
+    "beneficiary": "0x17C33dB369B0BcAcEc40115f5D1665f43fF70361",
+    "amount": "77.328652332880517632",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "ADMIN_PRIVATE_KEY",
+    "policy": "Current owner-admin wallet balance detected on the live replacement token. Lock it unless you intentionally need a small liquid admin reserve."
+  },
+  {
+    "category": "operator_wallet_reserve",
+    "current_holder": "0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10",
+    "beneficiary": "0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10",
+    "amount": "35.441280728647190857",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "OPERATOR_PRIVATE_KEY",
+    "policy": "Legacy deployer-operator wallet balance detected on the live replacement token. Lock it or consolidate it after reviewing whether this wallet still needs operational KPL."
+  },
+  {
+    "category": "treasury_reserve",
+    "current_holder": "0xCd101D34FB1Adf308aF1712Eb04316f48FEA74Da",
+    "beneficiary": "0xCd101D34FB1Adf308aF1712Eb04316f48FEA74Da",
+    "amount": "6.801702295950136389",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 730,
+    "signerKeyEnv": "TREASURY_PRIVATE_KEY",
+    "policy": "Treasury reserve detected from the live replacement contract. Keep spending policy separate from owner control."
+  },
+  {
+    "category": "ecosystem_growth",
+    "current_holder": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+    "beneficiary": "0x27c97c377f43e73b1F62b317E3499B510e5a0C95",
+    "amount": "4.429397493272334449",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 730,
+    "signerKeyEnv": "ECOSYSTEM_PRIVATE_KEY",
+    "policy": "Ecosystem wallet balance detected from the live replacement contract. Use only for grants, incentives, or ecosystem programs."
+  },
+  {
+    "category": "team_core_contributors",
+    "current_holder": "0x330fccDcc5360ffE8a35D516fd022c22633285Ea",
+    "beneficiary": "0x330fccDcc5360ffE8a35D516fd022c22633285Ea",
+    "amount": "35.148534040780626171",
+    "start": "2027-05-14T00:00:00Z",
+    "durationDays": 1095,
+    "signerKeyEnv": "TEAM_PRIVATE_KEY",
+    "policy": "One-year cliff from the post-migration reset, then three-year linear vesting."
+  },
+  {
+    "category": "future_liquidity",
+    "current_holder": "0x366f725370Fa789528a1144DfEDc1B553cb00E11",
+    "beneficiary": "0x366f725370Fa789528a1144DfEDc1B553cb00E11",
+    "amount": "50.0",
+    "start": "2026-11-14T00:00:00Z",
+    "durationDays": 0,
+    "signerKeyEnv": "FUTURE_LIQUIDITY_PRIVATE_KEY",
+    "policy": "Pure timelock for future liquidity decisions on the live replacement token."
+  },
+  {
+    "category": "marketing_partnerships",
+    "current_holder": "0x303Ad90E05C8F46EC87B0DD5B113C9224E8b8182",
+    "beneficiary": "0x303Ad90E05C8F46EC87B0DD5B113C9224E8b8182",
+    "amount": "83.900104792637983626",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "MARKETING_PRIVATE_KEY",
+    "policy": "Marketing wallet balance detected from the live replacement contract. Release gradually against a disclosed monthly budget."
+  },
+  {
+    "category": "controlled_holder_01",
+    "current_holder": "0xAd129F4B5d527E1f08014e217eCaD4C1BF567B3d",
+    "beneficiary": "0xAd129F4B5d527E1f08014e217eCaD4C1BF567B3d",
+    "amount": "4669.736596813372402936",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_01_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_02",
+    "current_holder": "0x08989f8699c07dA7104c323961cca67fa34611B0",
+    "beneficiary": "0x08989f8699c07dA7104c323961cca67fa34611B0",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_02_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_03",
+    "current_holder": "0x0bf7f610c921a6d2811A6E146Fba4C906e349593",
+    "beneficiary": "0x0bf7f610c921a6d2811A6E146Fba4C906e349593",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_03_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_04",
+    "current_holder": "0x10f5a7d48D7F6DD1c7d3385105523bffF375Bc7a",
+    "beneficiary": "0x10f5a7d48D7F6DD1c7d3385105523bffF375Bc7a",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_04_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_05",
+    "current_holder": "0x137b241ddE0Fb860Dd6f5141bC6EbB3B88304f9B",
+    "beneficiary": "0x137b241ddE0Fb860Dd6f5141bC6EbB3B88304f9B",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_05_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_06",
+    "current_holder": "0x3279888bf3496dfA26249A685FC88D02c9FAAee1",
+    "beneficiary": "0x3279888bf3496dfA26249A685FC88D02c9FAAee1",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_06_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_07",
+    "current_holder": "0x37EA11AD7aF8DbBAc8A52c5FF721886589fCbe7B",
+    "beneficiary": "0x37EA11AD7aF8DbBAc8A52c5FF721886589fCbe7B",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_07_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_08",
+    "current_holder": "0x45accb5A0F7508626D69A894E182b3707aDf21D7",
+    "beneficiary": "0x45accb5A0F7508626D69A894E182b3707aDf21D7",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_08_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_09",
+    "current_holder": "0x4f1FC085BE26A1f3E06143D8826a4C5DBD6D5700",
+    "beneficiary": "0x4f1FC085BE26A1f3E06143D8826a4C5DBD6D5700",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_09_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_10",
+    "current_holder": "0x7fE5CAcE3FF1d614F453511fd7cD40DC90E45fE2",
+    "beneficiary": "0x7fE5CAcE3FF1d614F453511fd7cD40DC90E45fE2",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_10_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_11",
+    "current_holder": "0x8421ae83b42ca0eb965b5C171fd561f35e470309",
+    "beneficiary": "0x8421ae83b42ca0eb965b5C171fd561f35e470309",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_11_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_12",
+    "current_holder": "0x864529e8fF1c53ce16aD64a07128BFF4cfE15302",
+    "beneficiary": "0x864529e8fF1c53ce16aD64a07128BFF4cfE15302",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_12_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_13",
+    "current_holder": "0x91FD491b803320e7A702810fc79F0Ea32564ce13",
+    "beneficiary": "0x91FD491b803320e7A702810fc79F0Ea32564ce13",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_13_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_14",
+    "current_holder": "0x954D3679bEf2b7C973930a1AD44d4c9CC5342571",
+    "beneficiary": "0x954D3679bEf2b7C973930a1AD44d4c9CC5342571",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_14_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_15",
+    "current_holder": "0x9b8f6FeC5f6a3A49d49BD8738f4Fc9FDA40A4E49",
+    "beneficiary": "0x9b8f6FeC5f6a3A49d49BD8738f4Fc9FDA40A4E49",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_15_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_16",
+    "current_holder": "0xe092f5f167DBF7c5cF19b3e90397D9416278cA36",
+    "beneficiary": "0xe092f5f167DBF7c5cF19b3e90397D9416278cA36",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_16_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_17",
+    "current_holder": "0xe7366d934C997Fc71D0a0E5dCB4445897Bb99cb9",
+    "beneficiary": "0xe7366d934C997Fc71D0a0E5dCB4445897Bb99cb9",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_17_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_18",
+    "current_holder": "0xf8EC42552d20bb31750F03404e017899eF07cefC",
+    "beneficiary": "0xf8EC42552d20bb31750F03404e017899eF07cefC",
+    "amount": "1000",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_18_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_19",
+    "current_holder": "0xF82D6aa19B2683549EDB276A1745E7038B3Fc86B",
+    "beneficiary": "0xF82D6aa19B2683549EDB276A1745E7038B3Fc86B",
+    "amount": "833.398160364854800124",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_19_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_20",
+    "current_holder": "0x791e90b9C59368320968332869A0B953071416E0",
+    "beneficiary": "0x791e90b9C59368320968332869A0B953071416E0",
+    "amount": "700",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_20_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_21",
+    "current_holder": "0x4ACb6C4321253548a7d4Bb9C84032Cc4eE04bFD7",
+    "beneficiary": "0x4ACb6C4321253548a7d4Bb9C84032Cc4eE04bFD7",
+    "amount": "326.381561235450458769",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_21_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_22",
+    "current_holder": "0xC1dFc985b333B5e87CFdE366D4e95e8CE6E57136",
+    "beneficiary": "0xC1dFc985b333B5e87CFdE366D4e95e8CE6E57136",
+    "amount": "300",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_22_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_23",
+    "current_holder": "0x54d880671C2ce1C1Cc79DA338DA691B6e46Fe645",
+    "beneficiary": "0x54d880671C2ce1C1Cc79DA338DA691B6e46Fe645",
+    "amount": "235.098589635366239067",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_23_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_24",
+    "current_holder": "0xB747900083a4E7ecD2D1Da5407Ad3431a4D46388",
+    "beneficiary": "0xB747900083a4E7ecD2D1Da5407Ad3431a4D46388",
+    "amount": "225",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_24_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  },
+  {
+    "category": "controlled_holder_25",
+    "current_holder": "0x3125ccCc9018ad08DE59375C0aD57cE76264c1c5",
+    "beneficiary": "0x3125ccCc9018ad08DE59375C0aD57cE76264c1c5",
+    "amount": "190.269644242984424924",
+    "start": "2026-05-15T00:00:00Z",
+    "durationDays": 365,
+    "signerKeyEnv": "CONTROLLED_HOLDER_25_PRIVATE_KEY",
+    "policy": "Placeholder generated from controlled.addresses.txt and the migration snapshot. Review beneficiary, start date, duration, and whether this holder should instead be consolidated before live execution."
+  }
+]

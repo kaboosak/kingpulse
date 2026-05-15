@@ -3,212 +3,388 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KingPulse Console</title>
+    <title>KPL | KingPulse on Monad</title>
+    <meta
+      name="description"
+      content="KPL is the KingPulse token on Monad mainnet. Explore the live contract, token design, supply split, and wallet console from one focused interface."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/frontend/styles.css" />
   </head>
   <body>
+    <div class="site-bg">
+      <div class="site-orb orb-a"></div>
+      <div class="site-orb orb-b"></div>
+      <div class="site-grid"></div>
+    </div>
+
     <div class="page-shell">
-      <header class="hero">
-        <div class="brand-mark-wrap">
-          <img class="brand-mark" src="/frontend/kpl-logo-luxury.svg" alt="KPL logo" />
-        </div>
-        <div class="hero-copy">
-          <p class="eyebrow">Monad Mainnet</p>
-          <h1>KingPulse Wallet Console</h1>
-          <p class="brand-line">KPL</p>
-          <p class="hero-text">
-            Connect a wallet, inspect the live KingPulse token state, and submit
-            owner or user actions directly from the browser.
-          </p>
-        </div>
-        <div class="hero-actions">
+      <header class="topbar">
+        <a class="brand" href="#top">
+          <img class="brand-logo" src="/frontend/kpl-logo-luxury.svg" alt="KPL logo" />
+          <span class="brand-text">
+            <strong>KPL</strong>
+            <span>KingPulse</span>
+          </span>
+        </a>
+
+        <nav class="topnav">
+          <a href="#overview">Overview</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#console">Console</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <a class="nav-link-button" href="https://monadvision.com" target="_blank" rel="noreferrer">
+            Monad Explorer
+          </a>
           <button id="connect-wallet" class="primary-button">Connect Wallet</button>
-          <button id="switch-network" class="secondary-button">Switch To Monad Mainnet</button>
         </div>
       </header>
 
-      <main class="dashboard">
-        <section class="panel status-panel">
-          <div class="panel-header">
-            <h2>Session</h2>
-            <button id="refresh-state" class="ghost-button">Refresh</button>
-          </div>
-          <div class="status-grid">
-            <div>
-              <span class="label">Wallet</span>
-              <p id="connected-account">Not connected</p>
-            </div>
-            <div>
-              <span class="label">Chain</span>
-              <p id="network-name">Unknown</p>
-            </div>
-            <div>
-              <span class="label">Contract</span>
-              <p id="contract-address">Not loaded</p>
-            </div>
-            <div>
-              <span class="label">Role</span>
-              <p id="wallet-role">Unknown</p>
-            </div>
-            <div>
-              <span class="label">MON Balance</span>
-              <p id="native-balance">-</p>
-            </div>
-            <div>
-              <span class="label">KPL Balance</span>
-              <p id="token-balance">-</p>
-            </div>
-          </div>
-        </section>
+      <main id="top">
+        <section class="hero-panel">
+          <div class="hero-copy">
+            <p class="eyebrow">Monad Mainnet Token Interface</p>
+            <h1>Build around momentum. Operate KPL from a proper website.</h1>
+            <p class="hero-text">
+              KingPulse now defaults to the finalized replacement deployment, with live owner,
+              supply, pause, and migration state exposed directly in the browser console.
+            </p>
 
-        <section class="panel config-panel">
-          <div class="panel-header">
-            <h2>Target Contract</h2>
-          </div>
-          <label>
-            Contract Address
-            <input
-              id="contract-input"
-              type="text"
-              value="0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c"
-              spellcheck="false"
-            />
-          </label>
-          <button id="load-contract" class="secondary-button">Load Contract</button>
-        </section>
+            <div class="hero-actions">
+              <a class="primary-button button-link" href="#console">Open KPL Console</a>
+              <button id="switch-network" class="secondary-button">Switch To Monad</button>
+            </div>
 
-        <section class="panel info-panel">
-          <div class="panel-header">
-            <h2>Token Info</h2>
+            <div class="hero-points">
+              <div>
+                <span class="label">Contract</span>
+                <p id="contract-address">0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c</p>
+              </div>
+              <div>
+                <span class="label">Chain</span>
+                <p id="network-name">Monad Mainnet</p>
+              </div>
+              <div>
+                <span class="label">Wallet Role</span>
+                <p id="wallet-role">Not connected</p>
+              </div>
+            </div>
           </div>
-          <div class="info-grid">
-            <div>
-              <span class="label">Name</span>
-              <p id="token-name">-</p>
-            </div>
-            <div>
-              <span class="label">Symbol</span>
-              <p id="token-symbol">-</p>
-            </div>
-            <div>
-              <span class="label">Decimals</span>
-              <p id="token-decimals">-</p>
-            </div>
-            <div>
-              <span class="label">Total Supply</span>
-              <p id="token-supply">-</p>
-            </div>
-            <div>
-              <span class="label">Owner</span>
-              <p id="token-owner">-</p>
-            </div>
-            <div>
-              <span class="label">Paused</span>
-              <p id="token-paused">-</p>
-            </div>
+
+          <div class="hero-card-stack">
+            <article class="hero-feature-card pulse-card">
+              <p class="eyebrow">Live Session</p>
+              <div class="metric-row">
+                <div>
+                  <span class="label">Connected Wallet</span>
+                  <p id="connected-account">Not connected</p>
+                </div>
+                <div>
+                  <span class="label">Native Balance</span>
+                  <p id="native-balance">-</p>
+                </div>
+                <div>
+                  <span class="label">KPL Balance</span>
+                  <p id="token-balance">-</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="hero-feature-card status-card">
+              <p class="eyebrow">Why This Page Exists</p>
+              <ul class="signal-list">
+                <li>Official replacement contract pinned by default</li>
+                <li>Live contract inspection without leaving the page</li>
+                <li>Owner and user actions wired to the active KPL deployment</li>
+              </ul>
+            </article>
           </div>
         </section>
 
-        <section class="panel lookup-panel">
-          <div class="panel-header">
-            <h2>Lookups</h2>
+        <section id="contract-risk-banner" class="notice-panel" hidden>
+          <div class="section-heading">
+            <p class="eyebrow">Operational Warning</p>
+            <h2>Contract self-balance requires contract-specific handling.</h2>
           </div>
-          <form id="balance-form" class="stack-form">
-            <h3>Wallet Balance</h3>
-            <input id="balance-address" type="text" placeholder="0x..." spellcheck="false" />
-            <button class="secondary-button" type="submit">Check Balance</button>
-            <p id="balance-result" class="result-line">-</p>
-          </form>
-
-          <form id="allowance-form" class="stack-form">
-            <h3>Allowance</h3>
-            <input id="allowance-owner" type="text" placeholder="Owner address" spellcheck="false" />
-            <input id="allowance-spender" type="text" placeholder="Spender address" spellcheck="false" />
-            <button class="secondary-button" type="submit">Check Allowance</button>
-            <p id="allowance-result" class="result-line">-</p>
-          </form>
+          <p id="contract-risk-text">
+            Refresh the session with a wallet connected to inspect contract-held KPL and the handling rules for the selected deployment.
+          </p>
         </section>
 
-        <section class="panel actions-panel">
-          <div class="panel-header">
-            <h2>Token Actions</h2>
+        <section id="overview" class="story-grid">
+          <article class="story-card story-card-wide">
+            <p class="eyebrow">Positioning</p>
+            <h2>KPL is presented as a network-native asset, not a generic token dashboard.</h2>
+            <p>
+              The site is built to communicate signal first: the live replacement contract,
+              mainnet alignment, wallet session state, and a clear route into the operating
+              console while keeping the old migration-source token out of the default path.
+            </p>
+          </article>
+
+          <article class="story-card">
+            <p class="eyebrow">Supply</p>
+            <h3 id="token-supply">-</h3>
+            <p>Live total supply surfaced directly from the currently loaded KPL contract.</p>
+          </article>
+
+          <article class="story-card">
+            <p class="eyebrow">Ownership</p>
+            <h3 id="token-owner">-</h3>
+            <p>Owner-controlled mint, pause, and unpause functions remain visible and auditable.</p>
+          </article>
+
+          <article class="story-card">
+            <p class="eyebrow">Contract Self-Balance</p>
+            <h3 id="contract-self-balance">-</h3>
+            <p id="contract-self-balance-note">
+              Refresh the session to inspect whether the selected token contract currently holds KPL.
+            </p>
+          </article>
+
+          <article class="story-card">
+            <p class="eyebrow">Token State</p>
+            <h3><span id="token-name">KPL</span> / <span id="token-symbol">KPL</span></h3>
+            <p>
+              <span class="inline-meta">Decimals: <span id="token-decimals">-</span></span>
+              <span class="inline-meta">Paused: <span id="token-paused">-</span></span>
+              <span class="inline-meta">Migration Finalized: <span id="token-migration-finalized">-</span></span>
+            </p>
+          </article>
+        </section>
+
+        <section id="tokenomics" class="tokenomics-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Historical Planning</p>
+            <h2>Legacy launch allocations are shown here as archive material, not as the current live distribution.</h2>
+            <p class="section-note">
+              These ratios come from an older `1,000,000 KPL` planning model. Use the live supply,
+              owner, migration state, and contract self-balance panels above for the current official contract state.
+            </p>
           </div>
-          <div class="actions-grid">
-            <form id="mint-form" class="action-card">
-              <h3>Mint</h3>
-              <p id="mint-hint" class="hint-line">Owner wallet required.</p>
-              <input id="mint-recipient" type="text" placeholder="Recipient address" spellcheck="false" />
-              <input id="mint-amount" type="text" placeholder="Amount in KPL" />
-              <button class="primary-button" type="submit">Mint</button>
-              <p id="mint-result" class="result-line">-</p>
-            </form>
 
-            <form id="transfer-form" class="action-card">
-              <h3>Transfer</h3>
-              <input id="transfer-recipient" type="text" placeholder="Recipient address" spellcheck="false" />
-              <input id="transfer-amount" type="text" placeholder="Amount in KPL" />
-              <button class="primary-button" type="submit">Transfer</button>
-              <p id="transfer-result" class="result-line">-</p>
-            </form>
+          <div class="tokenomics-grid">
+            <article class="allocation-card">
+              <span class="allocation-share">50.0%</span>
+              <h3>Treasury Reserve</h3>
+              <p>Long-duration reserve intended for treasury management and structured release.</p>
+            </article>
 
-            <form id="approve-form" class="action-card">
-              <h3>Approve</h3>
-              <p id="approve-hint" class="hint-line">Approves a spender from the connected wallet.</p>
-              <input id="approve-spender" type="text" placeholder="Spender address" spellcheck="false" />
-              <input id="approve-amount" type="text" placeholder="Amount in KPL" />
-              <button class="primary-button" type="submit">Approve</button>
-              <p id="approve-result" class="result-line">-</p>
-            </form>
+            <article class="allocation-card">
+              <span class="allocation-share">20.0%</span>
+              <h3>Ecosystem Growth</h3>
+              <p>Reserved for grants, incentives, partnerships, and network-facing expansion.</p>
+            </article>
 
-            <form id="permit-form" class="action-card">
-              <h3>Permit</h3>
-              <p id="permit-hint" class="hint-line">Signs EIP-2612 approval with the connected wallet and submits it on-chain.</p>
-              <input id="permit-spender" type="text" placeholder="Spender address" spellcheck="false" />
-              <input id="permit-amount" type="text" placeholder="Amount in KPL" />
-              <input id="permit-deadline" type="text" placeholder="Deadline in minutes from now (default 60)" />
-              <button class="primary-button" type="submit">Sign Permit</button>
-              <p id="permit-result" class="result-line">-</p>
-            </form>
+            <article class="allocation-card">
+              <span class="allocation-share">15.0%</span>
+              <h3>Team Core Contributors</h3>
+              <p>Scheduled around a cliff and long-form vesting rather than immediate circulation.</p>
+            </article>
 
-            <form id="burn-form" class="action-card">
-              <h3>Burn</h3>
-              <input id="burn-amount" type="text" placeholder="Amount in KPL" />
-              <button class="primary-button" type="submit">Burn</button>
-              <p id="burn-result" class="result-line">-</p>
-            </form>
+            <article class="allocation-card">
+              <span class="allocation-share">10.0%</span>
+              <h3>Future Liquidity</h3>
+              <p>Held for later market structure decisions without forcing it into day-one flow.</p>
+            </article>
 
-            <form id="burn-from-form" class="action-card">
-              <h3>Burn From</h3>
-              <p id="burn-from-hint" class="hint-line">Requires allowance for the connected wallet.</p>
-              <input id="burn-from-owner" type="text" placeholder="Owner address" spellcheck="false" />
-              <input id="burn-from-amount" type="text" placeholder="Amount in KPL" />
-              <button class="primary-button" type="submit">Burn From</button>
-              <p id="burn-from-result" class="result-line">-</p>
-            </form>
+            <article class="allocation-card">
+              <span class="allocation-share">3.9%</span>
+              <h3>Marketing Partnerships</h3>
+              <p>Budgeted for execution, distribution support, and sustained external reach.</p>
+            </article>
 
-            <div class="action-card compact-actions">
-              <h3>Pause Controls</h3>
-              <p id="pause-hint" class="hint-line">Owner wallet required.</p>
-              <button id="pause-button" class="secondary-button" type="button">Pause</button>
-              <button id="unpause-button" class="secondary-button" type="button">Unpause</button>
-            </div>
+            <article class="allocation-card">
+              <span class="allocation-share">1.1%</span>
+              <h3>Initial Liquidity</h3>
+              <p>Small targeted allocation used to establish tradable market presence on mainnet.</p>
+            </article>
           </div>
         </section>
 
-        <section class="panel activity-panel">
-          <div class="panel-header">
-            <h2>Activity</h2>
+        <section class="feature-band">
+          <article class="feature-card">
+            <p class="eyebrow">Core Contract Surface</p>
+            <h3>Permit, burn, burnFrom, pause, mint.</h3>
+            <p>The website exposes the token’s operational edges and warns when a requested action is impossible on-chain.</p>
+          </article>
+
+          <article class="feature-card">
+            <p class="eyebrow">Mainnet Workflow</p>
+            <h3>Wallet-aware and network-aware.</h3>
+            <p>Switch to Monad, load the target contract, verify balances, and send actions in one flow.</p>
+          </article>
+
+          <article class="feature-card">
+            <p class="eyebrow">Auditability</p>
+            <h3>Recent actions and live activity log.</h3>
+            <p>Transaction hashes, confirmations, and read results stay visible inside the interface.</p>
+          </article>
+        </section>
+
+        <section id="console" class="console-shell">
+          <div class="section-heading">
+            <p class="eyebrow">KPL Console</p>
+            <h2>Operate the token contract without leaving the site.</h2>
           </div>
-          <div id="recent-actions" class="recent-actions">
-            <p class="empty-state">No transactions yet.</p>
+
+          <div class="console-grid">
+            <section class="panel session-panel">
+              <div class="panel-header">
+                <h3>Session</h3>
+                <button id="refresh-state" class="ghost-button">Refresh</button>
+              </div>
+
+              <div class="status-grid">
+                <div>
+                  <span class="label">Wallet</span>
+                  <p class="mono-value" id="connected-account-mirror">Use the session card above</p>
+                </div>
+                <div>
+                  <span class="label">Chain</span>
+                  <p class="mono-value" id="network-name-mirror">Monad Mainnet</p>
+                </div>
+                <div>
+                  <span class="label">Contract</span>
+                  <p class="mono-value" id="contract-address-mirror">-</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel contract-panel">
+              <div class="panel-header">
+                <h3>Contract Target</h3>
+              </div>
+              <label class="input-wrap">
+                <span class="label">Contract Address</span>
+                <input
+                  id="contract-input"
+                  type="text"
+                  value="0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c"
+                  spellcheck="false"
+                />
+              </label>
+              <button id="load-contract" class="secondary-button">Load Contract</button>
+            </section>
+
+            <section class="panel lookup-panel">
+              <div class="panel-header">
+                <h3>Lookups</h3>
+              </div>
+
+              <form id="balance-form" class="stack-form">
+                <label class="input-wrap">
+                  <span class="label">Wallet Balance</span>
+                  <input id="balance-address" type="text" placeholder="0x..." spellcheck="false" />
+                </label>
+                <button class="secondary-button" type="submit">Check Balance</button>
+                <p id="balance-result" class="result-line">-</p>
+              </form>
+
+              <form id="allowance-form" class="stack-form">
+                <label class="input-wrap">
+                  <span class="label">Allowance Owner</span>
+                  <input id="allowance-owner" type="text" placeholder="Owner address" spellcheck="false" />
+                </label>
+                <label class="input-wrap">
+                  <span class="label">Allowance Spender</span>
+                  <input id="allowance-spender" type="text" placeholder="Spender address" spellcheck="false" />
+                </label>
+                <button class="secondary-button" type="submit">Check Allowance</button>
+                <p id="allowance-result" class="result-line">-</p>
+              </form>
+            </section>
+
+            <section class="panel action-panel">
+              <div class="panel-header">
+                <h3>Token Actions</h3>
+              </div>
+
+              <div class="actions-grid">
+                <form id="mint-form" class="action-card">
+                  <h4>Mint</h4>
+                  <p id="mint-hint" class="hint-line">Owner wallet required.</p>
+                  <input id="mint-recipient" type="text" placeholder="Recipient address" spellcheck="false" />
+                  <input id="mint-amount" type="text" placeholder="Amount in KPL" />
+                  <button class="primary-button" type="submit">Mint</button>
+                  <p id="mint-result" class="result-line">-</p>
+                </form>
+
+                <form id="transfer-form" class="action-card">
+                  <h4>Transfer</h4>
+                  <input id="transfer-recipient" type="text" placeholder="Recipient address" spellcheck="false" />
+                  <input id="transfer-amount" type="text" placeholder="Amount in KPL" />
+                  <button class="primary-button" type="submit">Transfer</button>
+                  <p id="transfer-result" class="result-line">-</p>
+                </form>
+
+                <form id="approve-form" class="action-card">
+                  <h4>Approve</h4>
+                  <p id="approve-hint" class="hint-line">Approves a spender from the connected wallet.</p>
+                  <input id="approve-spender" type="text" placeholder="Spender address" spellcheck="false" />
+                  <input id="approve-amount" type="text" placeholder="Amount in KPL" />
+                  <button class="primary-button" type="submit">Approve</button>
+                  <p id="approve-result" class="result-line">-</p>
+                </form>
+
+                <form id="permit-form" class="action-card">
+                  <h4>Permit</h4>
+                  <p id="permit-hint" class="hint-line">
+                    Signs EIP-2612 approval with the connected wallet and submits it on-chain.
+                  </p>
+                  <input id="permit-spender" type="text" placeholder="Spender address" spellcheck="false" />
+                  <input id="permit-amount" type="text" placeholder="Amount in KPL" />
+                  <input id="permit-deadline" type="text" placeholder="Deadline in minutes from now (default 60)" />
+                  <button class="primary-button" type="submit">Sign Permit</button>
+                  <p id="permit-result" class="result-line">-</p>
+                </form>
+
+                <form id="burn-form" class="action-card">
+                  <h4>Burn</h4>
+                  <input id="burn-amount" type="text" placeholder="Amount in KPL" />
+                  <button class="primary-button" type="submit">Burn</button>
+                  <p id="burn-result" class="result-line">-</p>
+                </form>
+
+                <form id="burn-from-form" class="action-card">
+                  <h4>Burn From</h4>
+                  <p id="burn-from-hint" class="hint-line">Requires allowance for the connected wallet.</p>
+                  <input id="burn-from-owner" type="text" placeholder="Owner address" spellcheck="false" />
+                  <input id="burn-from-amount" type="text" placeholder="Amount in KPL" />
+                  <button class="primary-button" type="submit">Burn From</button>
+                  <p id="burn-from-result" class="result-line">-</p>
+                </form>
+
+                <div class="action-card pause-card">
+                  <h4>Pause Controls</h4>
+                  <p id="pause-hint" class="hint-line">Owner wallet required.</p>
+                  <button id="pause-button" class="secondary-button" type="button">Pause</button>
+                  <button id="unpause-button" class="secondary-button" type="button">Unpause</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel activity-panel">
+              <div class="panel-header">
+                <h3>Activity</h3>
+              </div>
+
+              <div id="recent-actions" class="recent-actions">
+                <p class="empty-state">No transactions yet.</p>
+              </div>
+
+              <div id="activity-log" class="activity-log">
+                <p class="empty-state">Ready.</p>
+              </div>
+            </section>
           </div>
-          <div id="activity-log" class="activity-log">Ready.</div>
         </section>
       </main>
     </div>

@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-05-14T13:21:05.557Z",
+  "distributionFile": "distribution.migration.snapshot.json",
+  "batchSize": 50,
+  "batchCount": 4,
+  "recipientCount": 156,
+  "totalAmount": "27510.0",
+  "totalRawAmount": "27510000000000000000000",
+  "largestBatchRecipientCount": 50,
+  "smallestBatchRecipientCount": 6,
+  "outputFile": "distribution.migration.batches.json"
+}
