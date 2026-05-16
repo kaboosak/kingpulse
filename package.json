@@ -67,6 +67,8 @@
     "unpause:mainnet": "KINGPULSE_SIGNER=admin HARDHAT_NETWORK=monad node scripts/unpause.js",
     "transfer-ownership": "KINGPULSE_SIGNER=admin HARDHAT_NETWORK=monad node scripts/transfer-ownership.js",
     "transfer-ownership:mainnet": "KINGPULSE_SIGNER=admin HARDHAT_NETWORK=monad node scripts/transfer-ownership.js",
+    "renounce-ownership": "KINGPULSE_SIGNER=admin HARDHAT_NETWORK=monad node scripts/renounce-ownership.js",
+    "renounce-ownership:mainnet": "KINGPULSE_SIGNER=admin HARDHAT_NETWORK=monad node scripts/renounce-ownership.js",
     "balance": "HARDHAT_NETWORK=monad node scripts/balance.js",
     "balance:mainnet": "HARDHAT_NETWORK=monad node scripts/balance.js",
     "native-balance": "HARDHAT_NETWORK=monad node scripts/native-balance.js",

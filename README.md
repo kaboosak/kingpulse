@@ -17,12 +17,12 @@ KingPulse is a Solidity ERC20 token project for Monad with:
 - Symbol: `KPL`
 - Decimals: `18`
 - Default mainnet contract in this repo: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Replacement-contract reference: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
-- Current observed live state on `2026-05-15`:
-  - Total supply: `29,750 KPL`
+- Historical replacement-contract reference: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- Current observed live state on `2026-05-16`:
+  - Total supply: `27,850 KPL`
   - Contract-held balance: `2,240 KPL`
-  - Externally held supply: `27,510 KPL`
-  - Owner: `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
+  - Externally held supply: `25,610 KPL`
+  - Owner: `0x0000000000000000000000000000000000000000`
   - `paused`: `false`
 
 Monad mainnet deployment:
@@ -30,18 +30,19 @@ Monad mainnet deployment:
 - Default contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
 - Chain ID: `143`
 - Explorer: `https://monadscan.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Replacement-contract reference: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- Historical replacement-contract reference: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 
 ## Mainnet Status
 
 - Default mainnet contract in this repo: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Replacement-contract reference: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
-- Current on-chain owner: `0x27c97c377f43e73b1F62b317E3499B510e5a0C95`
-- Current on-chain total supply: `29,750 KPL`
+- Historical replacement-contract reference: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- Current on-chain owner: `0x0000000000000000000000000000000000000000`
+- Current on-chain total supply: `27,850 KPL`
 - Current contract-held balance: `2,240 KPL`
-- Current externally held supply: `27,510 KPL`
+- Current externally held supply: `25,610 KPL`
 - Current paused state: `false`
 - KPL held at the token contract address is stranded on this legacy deployment and should not be treated as spendable holder balance.
+- Ownership on the repo-default legacy contract is already renounced, so `mint`, `pause`, `unpause`, and ownership transfer are permanently unavailable there.
 - Older repo documents that referenced `1,000,000 KPL` or `1,000,200 KPL` should be treated as historical and not as the live supply.
 - Operations runbook: [OPERATIONS.md](/home/el3aw/kingpulse/OPERATIONS.md#L1)
 - Tokenomics: [TOKENOMICS.md](/home/el3aw/kingpulse/TOKENOMICS.md#L1)
@@ -76,6 +77,7 @@ kingpulse/
 │   ├── mint.js
 │   ├── native-balance.js
 │   ├── pause.js
+│   ├── renounce-ownership.js
 │   ├── serve-frontend.js
 │   ├── snapshot-holders.js
 │   ├── token-info.js
@@ -156,7 +158,9 @@ Recommended production policy:
   - `unpause`
   - `transferOwnership`
 
-Important: trust the on-chain `owner()` result, not an old local label. If the actual owner changes, update `ADMIN_PRIVATE_KEY` to match the wallet that currently controls the contract.
+Avoid renouncing ownership unless you intentionally want to disable all owner-only controls forever. On the legacy `KingPulse` contract that means no further `mint`, `pause`, `unpause`, or ownership transfer. On the historical replacement migration token it would also disable contract-balance recovery and contract-balance burning helpers.
+
+Important: trust the on-chain `owner()` result, not an old local label. On the repo-default legacy contract `owner()` is already the zero address, so changing `ADMIN_PRIVATE_KEY` will not restore owner-only control there.
 
 ## Compile And Test
 
@@ -233,7 +237,7 @@ Recommended custody plan for the current category wallets is in:
 vesting.recommended.json
 ```
 
-That file is now sized to the exact live balances of the wallets provable from local `.env` keys on the official replacement token and currently covers `293.049671684168789124 KPL`. If you control additional large-holder wallets outside `.env`, extend the plan before running it.
+That file is now sized to the exact live balances of the wallets provable from local `.env` keys on the repo-default token and currently covers `293.049671684168789124 KPL`. If you control additional large-holder wallets outside `.env`, extend the plan before running it.
 
 Recommended direction:
 
@@ -398,7 +402,7 @@ Token metadata and status:
 npm run token-info
 ```
 
-`token-info` also reports any KPL held at the token contract address. On the legacy `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` deployment that balance is stranded; on the official replacement contract it can be handled with owner-only contract-balance recovery or burn helpers.
+`token-info` also reports any KPL held at the token contract address. On the legacy `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` deployment that balance is stranded; on the historical replacement contract it can be handled with owner-only contract-balance recovery or burn helpers.
 
 KPL balance:
 
@@ -420,14 +424,16 @@ npm run allowance -- 0xOwnerAddress 0xSpenderAddress
 
 ## Migration Tooling
 
-Live migration is already complete on Monad mainnet:
+The repo-default mainnet contract remains `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`.
+
+The historical replacement-token exercise on Monad mainnet used:
 
 - Legacy source contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Official replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- Historical replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 - Snapshot block: `74540419`
 - Finalize tx: `0x8a97f677afa158dd6ff2890bd7238215330f664ce7ebb479348c047424e5fcc5`
 
-The scripts below remain useful for auditing the completed migration, rehearsing on test deployments, or preparing a future replacement flow. Do not rerun mint or finalize against the official replacement contract, because minting is already closed there.
+The scripts below remain useful for auditing that historical replacement flow, rehearsing on test deployments, or preparing a future replacement flow. Do not rerun mint or finalize against `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`, because minting is already closed there.
 
 Deploy the replacement migration contract scaffold:
 
@@ -489,7 +495,7 @@ To resume after partial completion, select a later range:
 KINGPULSE_MIGRATION_ADDRESS=0xReplacementToken npm run migration:mint-batches -- --start-batch 2
 ```
 
-Check on-chain migration progress against the local batch file. For the live official replacement token:
+Check on-chain migration progress against the local batch file. For the historical `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` replacement token:
 
 ```bash
 KINGPULSE_MIGRATION_ADDRESS=0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369 npm run migration:status
@@ -508,6 +514,8 @@ KINGPULSE_MIGRATION_ADDRESS=0xReplacementToken npm run migration:finalize
 ```
 
 ## Admin Commands
+
+On the repo-default legacy contract, `mint`, `pause`, `unpause`, and `transfer-ownership` now revert because ownership has already been renounced.
 
 Mint:
 
@@ -564,6 +572,14 @@ Unpause:
 ```bash
 npm run unpause
 ```
+
+Renounce ownership permanently:
+
+```bash
+npm run renounce-ownership -- --confirm-renounce-ownership
+```
+
+This is irreversible. After it succeeds, `owner()` becomes the zero address and owner-only functions stop working.
 
 ## Spender Commands
 

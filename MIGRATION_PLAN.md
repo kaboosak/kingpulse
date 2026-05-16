@@ -1,13 +1,15 @@
 # KingPulse Migration Plan
 
-This document records the completed migration from the legacy KingPulse mainnet contract at `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` to the official replacement contract at `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`.
+This document records the historical replacement-token exercise from the legacy KingPulse mainnet contract at `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` to the replacement contract at `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`.
 
-## Final Status
+It is a historical reference only. The current repo-default live contract remains `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`.
+
+## Historical Replacement Status
 
 Observed and executed on `2026-05-14`:
 
 - Legacy source contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Official replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- Historical replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 - Snapshot block: `74540419`
 - Policy chosen: retire the stranded legacy self-balance
 - Replacement total supply: `27,510 KPL`
@@ -17,6 +19,8 @@ Observed and executed on `2026-05-14`:
 - Replacement owner: `0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10`
 - Finalize tx: `0x8a97f677afa158dd6ff2890bd7238215330f664ce7ebb479348c047424e5fcc5`
 - Finalize block: `74560704`
+
+This section is tied to the snapshot block above and should not be read as the current live legacy supply after later burns and ownership renouncement.
 
 ## Legacy Problem
 
@@ -51,7 +55,7 @@ Mint batch transactions:
 The selected policy was the cleaner retirement path:
 
 - reissue only the externally held `27,510 KPL`
-- omit the stranded legacy `2,240 KPL` from the official replacement supply
+- omit the stranded legacy `2,240 KPL` from the replacement supply used in that exercise
 - keep the legacy contract as deprecated historical reference only
 
 No treasury or reserve wallet received a discretionary recreation of the stranded balance.
@@ -65,14 +69,13 @@ The migration artifacts committed to the repo are:
 - `distribution.migration.batches.json`
 - `distribution.migration.batches.summary.json`
 
-## Repo Defaults After Migration
+## Current Repo Posture
 
-The repo should now be treated as post-migration:
+The repo is not currently operating in post-migration mode:
 
-- `KINGPULSE_ADDRESS` and frontend defaults point to `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
-- `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` is legacy and should not be the default contract anywhere
-- public docs should reference the replacement token as official and the legacy contract as deprecated
-- migration mint and finalize steps must not be rerun against the official replacement contract
+- `KINGPULSE_ADDRESS` and frontend defaults point to `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` is kept as historical/reference-only material unless the project intentionally switches back to it or performs a future migration
+- migration mint and finalize steps must not be rerun against `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 
 ## Historical And Reusable Commands
 
@@ -96,7 +99,7 @@ Build conservative `mintBatch` chunks:
 npm run migration:batches
 ```
 
-Inspect the live official replacement status:
+Inspect the historical replacement status:
 
 ```bash
 KINGPULSE_MIGRATION_ADDRESS=0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369 npm run migration:status
