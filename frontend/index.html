@@ -53,8 +53,8 @@
             <p class="eyebrow">Monad Mainnet Token Interface</p>
             <h1>Build around momentum. Operate KPL from a proper website.</h1>
             <p class="hero-text">
-              KingPulse now defaults to the finalized replacement deployment, with live owner,
-              supply, pause, and migration state exposed directly in the browser console.
+              KingPulse now defaults to the official owner-renounced deployment, with live
+              supply, pause, owner, and contract self-balance state exposed directly in the browser console.
             </p>
 
             <div class="hero-actions">
@@ -65,7 +65,7 @@
             <div class="hero-points">
               <div>
                 <span class="label">Contract</span>
-                <p id="contract-address">0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369</p>
+                <p id="contract-address">0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c</p>
               </div>
               <div>
                 <span class="label">Chain</span>
@@ -100,9 +100,9 @@
             <article class="hero-feature-card status-card">
               <p class="eyebrow">Why This Page Exists</p>
               <ul class="signal-list">
-                <li>Official replacement contract pinned by default</li>
+                <li>Official `0x740...` contract pinned by default</li>
                 <li>Live contract inspection without leaving the page</li>
-                <li>Owner and user actions wired to the active KPL deployment</li>
+                <li>Warnings when owner-only actions are no longer available on-chain</li>
               </ul>
             </article>
           </div>
@@ -123,9 +123,9 @@
             <p class="eyebrow">Positioning</p>
             <h2>KPL is presented as a network-native asset, not a generic token dashboard.</h2>
             <p>
-              The site is built to communicate signal first: the live replacement contract,
+              The site is built to communicate signal first: the live official contract,
               mainnet alignment, wallet session state, and a clear route into the operating
-              console while keeping the old migration-source token out of the default path.
+              console while keeping alternate KPL deployments out of the default path.
             </p>
           </article>
 
@@ -138,7 +138,7 @@
           <article class="story-card">
             <p class="eyebrow">Ownership</p>
             <h3 id="token-owner">-</h3>
-            <p>Owner-controlled mint, pause, and unpause functions remain visible and auditable.</p>
+            <p>Owner state is surfaced directly, including when ownership has been renounced.</p>
           </article>
 
           <article class="story-card">
@@ -267,7 +267,7 @@
                 <input
                   id="contract-input"
                   type="text"
-                  value="0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369"
+                  value="0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c"
                   spellcheck="false"
                 />
               </label>

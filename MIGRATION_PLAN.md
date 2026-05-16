@@ -2,14 +2,14 @@
 
 This document records the completed migration from the legacy KingPulse mainnet contract at `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` to the replacement contract at `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`.
 
-The current repo-default live contract is `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`.
+The current repo-default live contract has since been switched back to `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`, so this file should be read as historical migration reference, not as the current public operating posture.
 
 ## Current Replacement Status
 
 Observed on `2026-05-16`:
 
 - Legacy source contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Active replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- Replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 - Current replacement owner: `0x17C33dB369B0BcAcEc40115f5D1665f43fF70361`
 - Replacement total supply: `27,510 KPL`
 - Replacement max supply: `27,510 KPL`
@@ -78,11 +78,12 @@ The migration artifacts committed to the repo are:
 
 ## Current Repo Posture
 
-The repo is currently operating in post-migration mode:
+The repo currently keeps this migration as historical reference:
 
-- `KINGPULSE_ADDRESS` and frontend defaults point to `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
-- `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` is legacy and should not be the default contract
+- `KINGPULSE_ADDRESS` and frontend defaults point to `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- `KINGPULSE_MIGRATION_ADDRESS` continues to point to `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 - migration mint and finalize steps must not be rerun against `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` should not be promoted as the official token unless it is intentionally re-designated again
 
 ## Historical And Reusable Commands
 

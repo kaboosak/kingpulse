@@ -31,7 +31,7 @@ const runtimeConfig = {
   contractAddress:
     process.env.KINGPULSE_MAINNET_ADDRESS ||
     process.env.KINGPULSE_ADDRESS ||
-    "0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369",
+    "0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c",
 };
 
 const contentTypes = {

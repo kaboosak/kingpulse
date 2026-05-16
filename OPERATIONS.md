@@ -6,48 +6,47 @@ This document records the live operational state for the KingPulse contract curr
 
 - Network: Monad Mainnet
 - Chain ID: `143`
-- Contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
-- Explorer: `https://monadscan.com/address/0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
-- Current on-chain `owner()`: `0x17C33dB369B0BcAcEc40115f5D1665f43fF70361`
+- Contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- Explorer: `https://monadscan.com/address/0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- Current on-chain `owner()`: `0x0000000000000000000000000000000000000000`
 
 ## Current Contract State
 
 Observed on `2026-05-16`:
 
-- Live total supply: `27,510 KPL`
-- Externally held supply: `27,510 KPL`
-- KPL held at the token contract address itself: `0 KPL`
-- `maxSupply()`: `27,510 KPL`
-- `migrationFinalized()`: `true`
+- Live total supply: `27,850 KPL`
+- Externally held supply: `25,610 KPL`
+- KPL held at the token contract address itself: `2,240 KPL`
 - `paused()`: `false`
-- Migration minting is permanently closed on the repo-default contract because finalization is complete
-- Owner-only `pause`, `unpause`, `transferOwnership`, `recoverContractBalance`, and `burnContractBalance` remain available
+- Owner-only `mint`, `pause`, `unpause`, `transferOwnership`, and `renounceOwnership` are permanently unavailable because ownership is already renounced
+- Contract-held KPL are stranded because the contract exposes no owner rescue path and no self-approval path
 
-## Legacy Contract Reference
+## Replacement Contract Reference
 
-- Contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- `owner()`: `0x0000000000000000000000000000000000000000`
-- Total supply at reference check time: `27,850 KPL`
-- Externally held supply at reference check time: `25,610 KPL`
-- Contract-held KPL at reference check time: `2,240 KPL`
+- Contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- `owner()`: `0x17C33dB369B0BcAcEc40115f5D1665f43fF70361`
+- Total supply at reference check time: `27,510 KPL`
+- Externally held supply at reference check time: `27,510 KPL`
+- Contract-held KPL at reference check time: `0 KPL`
+- `migrationFinalized()`: `true`
 
 ## Operational Priorities
 
-1. Keep `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` in repo defaults, explorer links, and operator workflows.
-2. Complete the token-profile update and public branding for `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` if it will remain the public live token.
-3. Recalculate liquidity, treasury, and launch planning against the live `27,510 KPL` total and externally held supply.
-4. Transfer ownership if `0x17C33dB369B0BcAcEc40115f5D1665f43fF70361` is not the intended long-term admin or multisig.
-5. Keep `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` clearly marked as legacy and excluded from active supply claims.
+1. Keep `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` in repo defaults, explorer links, and public workflows.
+2. Complete the token-profile update and public branding for `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` if it will remain the official public token.
+3. Recalculate liquidity, treasury, and launch planning against the live `25,610 KPL` externally held supply, not the full `27,850 KPL`.
+4. Disclose publicly that the contract is owner-renounced and unpaused.
+5. Keep `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` clearly labeled as replacement/reference only unless it is intentionally re-designated later.
 
 ## Ownership Status
 
-The repo-default replacement contract still has an active owner.
+The repo-default contract is permanently ownerless.
 
-- `owner() = 0x17C33dB369B0BcAcEc40115f5D1665f43fF70361`
-- migration minting cannot be reopened because `migrationFinalized() = true`
-- ownership transfer is still possible
-- `pause` and `unpause` are still possible
-- owner-only contract-balance recovery and contract-balance burning remain available if KPL are ever sent to `address(this)`
+- `owner() = 0x0000000000000000000000000000000000000000`
+- no wallet can mint new supply
+- no wallet can pause or unpause transfers
+- no wallet can transfer ownership in the future
+- no wallet can recover or burn the `2,240 KPL` held at `address(this)`
 
 ## Verification Commands
 
@@ -55,10 +54,15 @@ Check the current repo-default contract info:
 
 ```bash
 npm run token-info
+```
+
+Check the migration-reference contract info:
+
+```bash
 npm run migration:status
 ```
 
-Check the legacy contract-held balance:
+Check the current repo-default contract-held balance:
 
 ```bash
 npm run balance -- 0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c
@@ -81,11 +85,11 @@ npm run whoami:operator
 - Completed migration record: [MIGRATION_PLAN.md](/home/el3aw/kingpulse/MIGRATION_PLAN.md#L1)
 - Snapshot and batch artifacts: `distribution.migration.snapshot.json`, `distribution.migration.snapshot.summary.json`, `distribution.migration.batches.json`, `distribution.migration.batches.summary.json`
 
-## Non-Default Mainnet Deployments
+## Non-Official Mainnet Deployments
 
 The following mainnet KingPulse deployments should not be presented as the active repo-default token unless explicitly re-designated:
 
-- `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
+- `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 - `0xBC51Ff6E0e03d13B7C9c9916c931Ce69589c0F54`
 - `0xd03f87cba1066afC456ca30cB76E368c18177691`
 - `0xB8F5BfAdb3d703a8b31016bd48CdF188BDD959c7`
@@ -102,5 +106,5 @@ Only one mainnet contract should be presented as the active KPL token at any tim
 - Do not expose private keys in terminals, screenshots, or chat.
 - If any production private key is exposed, treat it as compromised.
 - Rotate compromised keys immediately.
-- Check `owner()` on-chain before assuming the configured `ADMIN_PRIVATE_KEY` is still the live control wallet.
-- Do not count the legacy contract-held `2,240 KPL` on `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` as spendable supply.
+- Check `owner()` on-chain before assuming the configured `ADMIN_PRIVATE_KEY` can perform owner-only actions.
+- Do not count the repo-default contract-held `2,240 KPL` on `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` as spendable supply.

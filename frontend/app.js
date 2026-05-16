@@ -1,5 +1,6 @@
-const DEFAULT_CONTRACT_ADDRESS = "0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369";
-const LEGACY_CONTRACT_ADDRESS = "0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c";
+const DEFAULT_CONTRACT_ADDRESS = "0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c";
+const STRANDED_BALANCE_CONTRACT_ADDRESS = "0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c";
+const REPLACEMENT_CONTRACT_ADDRESS = "0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369";
 
 let runtimeConfig = {
   network: {
@@ -192,6 +193,10 @@ function isSameAddress(left, right) {
   return Boolean(left && right) && left.toLowerCase() === right.toLowerCase();
 }
 
+function isZeroAddress(value) {
+  return isSameAddress(value, "0x0000000000000000000000000000000000000000");
+}
+
 function txUrl(hash) {
   return `${runtimeConfig.network.explorerBaseUrl}/tx/${hash}`;
 }
@@ -203,22 +208,22 @@ function updateContractRisk(contractSelfBalance, totalSupply) {
     const externallyHeldSupply = totalSupply - contractSelfBalance;
     elements.contractSelfBalance.textContent = formatAmount(contractSelfBalance);
 
-    if (isSameAddress(state.contractAddress, LEGACY_CONTRACT_ADDRESS)) {
+    if (isSameAddress(state.contractAddress, STRANDED_BALANCE_CONTRACT_ADDRESS)) {
       elements.contractSelfBalanceNote.textContent =
-        `Externally held KPL: ${formatAmount(externallyHeldSupply)}. This is the legacy pre-migration contract, and its contract-held balance was retired in the replacement distribution.`;
+        `Externally held KPL: ${formatAmount(externallyHeldSupply)}. This repo-default KPL contract is owner-renounced, and its contract-held balance is stranded.`;
       elements.contractRiskText.textContent =
-        `${formatAmount(contractSelfBalance)} is currently held at the legacy KPL contract address ${state.contractAddress}. ` +
-        `That deployment exposes no owner rescue path and no self-approval path, so the balance is stranded and should not be treated as active official supply.`;
+        `${formatAmount(contractSelfBalance)} is currently held at the official KPL contract address ${state.contractAddress}. ` +
+        `That deployment has no owner rescue path and no self-approval path, so the balance is stranded and should not be treated as spendable supply.`;
       elements.contractRiskBanner.hidden = false;
       return;
     }
 
     if (state.migrationFinalized !== null) {
       elements.contractSelfBalanceNote.textContent =
-        `Externally held KPL: ${formatAmount(externallyHeldSupply)}. burnFrom cannot move contract-held KPL, but this replacement contract exposes owner-only recovery and burn helpers.`;
+        `Externally held KPL: ${formatAmount(externallyHeldSupply)}. burnFrom cannot move contract-held KPL, but the replacement contract exposes owner-only recovery and burn helpers.`;
       elements.contractRiskText.textContent =
         `${formatAmount(contractSelfBalance)} is currently held at token contract ${state.contractAddress}. ` +
-        `Use the contract-specific owner recovery or burn path instead of burnFrom if that balance needs to move.`;
+        `Use the contract-specific owner recovery or burn path on ${REPLACEMENT_CONTRACT_ADDRESS} instead of burnFrom if that balance needs to move.`;
       elements.contractRiskBanner.hidden = false;
       return;
     }
@@ -303,8 +308,8 @@ async function fetchAbi() {
   }
 
   const artifactPaths = [
-    "/artifacts/contracts/KingPulseMigrationToken.sol/KingPulseMigrationToken.json",
     "/artifacts/contracts/KingPulse.sol/KingPulse.json",
+    "/artifacts/contracts/KingPulseMigrationToken.sol/KingPulseMigrationToken.json",
   ];
 
   for (const artifactPath of artifactPaths) {
@@ -406,25 +411,30 @@ async function updateActionAvailability() {
     const contract = await ensureContract();
     const account = await getConnectedAccount();
     const owner = await contract.owner();
-    const isOwner = account.toLowerCase() === owner.toLowerCase();
-    const mintingClosed = state.migrationFinalized === true;
+    const ownershipRenounced = isZeroAddress(owner);
+    const isOwner = !ownershipRenounced && account.toLowerCase() === owner.toLowerCase();
+    const mintingClosed = state.migrationFinalized === true || ownershipRenounced;
     state.owner = owner;
 
-    elements.walletRole.textContent = isOwner ? "Owner" : "User";
+    elements.walletRole.textContent = ownershipRenounced ? "No owner" : isOwner ? "Owner" : "User";
 
     setCardDisabled(elements.mintForm, !isOwner || mintingClosed);
     elements.pauseButton.disabled = !isOwner;
     elements.unpauseButton.disabled = !isOwner;
     elements.pauseButton.closest(".action-card").classList.toggle("is-disabled", !isOwner);
 
-    elements.mintHint.textContent = mintingClosed
-      ? "Migration finalized. Minting is permanently closed on this contract."
+    elements.mintHint.textContent = ownershipRenounced
+      ? "Ownership is renounced on this contract. Minting is unavailable."
+      : mintingClosed
+        ? "Migration finalized. Minting is permanently closed on this contract."
+        : isOwner
+          ? "Owner wallet connected."
+          : "Owner wallet required.";
+    elements.pauseHint.textContent = ownershipRenounced
+      ? "Ownership is renounced on this contract. Pause controls are unavailable."
       : isOwner
         ? "Owner wallet connected."
         : "Owner wallet required.";
-    elements.pauseHint.textContent = isOwner
-      ? "Owner wallet connected."
-      : "Owner wallet required.";
     elements.approveHint.textContent = "Approves a spender from the connected wallet.";
     elements.permitHint.textContent = "Signs EIP-2612 approval with the connected wallet and submits it on-chain.";
 
@@ -457,8 +467,8 @@ async function updateActionAvailability() {
     if (isSameAddress(ownerAddress, state.contractAddress)) {
       setCardDisabled(elements.burnFromForm, true);
       elements.burnFromHint.textContent =
-        isSameAddress(state.contractAddress, LEGACY_CONTRACT_ADDRESS)
-          ? "The token contract cannot self-approve allowance. burnFrom cannot remove contract-held KPL, and on the legacy KPL deployment that balance is stranded."
+        isSameAddress(state.contractAddress, STRANDED_BALANCE_CONTRACT_ADDRESS)
+          ? "The token contract cannot self-approve allowance. burnFrom cannot remove contract-held KPL, and on this renounced KPL deployment that balance is stranded."
           : "The token contract cannot self-approve allowance. burnFrom cannot remove contract-held KPL; use contract-specific owner recovery or burn flows if available.";
       return;
     }
@@ -513,7 +523,7 @@ async function refreshSession() {
     elements.nativeBalance.textContent = `${getEthers().formatEther(nativeBalance)} MON`;
     elements.tokenBalance.textContent = formatAmount(tokenBalance);
     elements.walletRole.textContent =
-      account.toLowerCase() === owner.toLowerCase() ? "Owner" : "User";
+      isZeroAddress(owner) ? "No owner" : account.toLowerCase() === owner.toLowerCase() ? "Owner" : "User";
     syncMirrors();
 
     await refreshTokenInfo();
@@ -816,8 +826,8 @@ async function boot() {
 
     if (isSameAddress(owner, state.contractAddress)) {
       throw new Error(
-        isSameAddress(state.contractAddress, LEGACY_CONTRACT_ADDRESS)
-          ? "The token contract address cannot self-approve allowance. burnFrom cannot remove contract-held KPL, and on the legacy KPL deployment that balance is stranded."
+        isSameAddress(state.contractAddress, STRANDED_BALANCE_CONTRACT_ADDRESS)
+          ? "The token contract address cannot self-approve allowance. burnFrom cannot remove contract-held KPL, and on this renounced KPL deployment that balance is stranded."
           : "The token contract address cannot self-approve allowance. burnFrom cannot remove contract-held KPL; use contract-specific owner recovery or burn flows if available."
       );
     }
