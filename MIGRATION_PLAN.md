@@ -1,26 +1,33 @@
 # KingPulse Migration Plan
 
-This document records the historical replacement-token exercise from the legacy KingPulse mainnet contract at `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` to the replacement contract at `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`.
+This document records the completed migration from the legacy KingPulse mainnet contract at `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` to the replacement contract at `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`.
 
-It is a historical reference only. The current repo-default live contract remains `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`.
+The current repo-default live contract is `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`.
 
-## Historical Replacement Status
+## Current Replacement Status
 
-Observed and executed on `2026-05-14`:
+Observed on `2026-05-16`:
 
 - Legacy source contract: `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- Historical replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
-- Snapshot block: `74540419`
-- Policy chosen: retire the stranded legacy self-balance
+- Active replacement contract: `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- Current replacement owner: `0x17C33dB369B0BcAcEc40115f5D1665f43fF70361`
 - Replacement total supply: `27,510 KPL`
 - Replacement max supply: `27,510 KPL`
 - Replacement `migrationFinalized()`: `true`
 - Replacement `paused()`: `false`
-- Replacement owner: `0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10`
+- Replacement contract-held KPL: `0 KPL`
+
+## Historical Execution Record
+
+Observed and executed on `2026-05-14`:
+
+- Snapshot block: `74540419`
+- Policy chosen: retire the stranded legacy self-balance
+- Replacement deploy-time owner: `0x3487E1fF712791C67A17D7E2fE45Af8C3E732C10`
 - Finalize tx: `0x8a97f677afa158dd6ff2890bd7238215330f664ce7ebb479348c047424e5fcc5`
 - Finalize block: `74560704`
 
-This section is tied to the snapshot block above and should not be read as the current live legacy supply after later burns and ownership renouncement.
+This execution section is tied to the snapshot block above and should not be read as the current live legacy supply after later burns and ownership renouncement on `0x740...`.
 
 ## Legacy Problem
 
@@ -33,7 +40,7 @@ Why:
 - the token contract address cannot sign an approval for itself
 - there is no owner rescue or owner burn function for `address(this)`
 
-That made the legacy `2,240 KPL` self-balance permanently stranded.
+That made the legacy `2,240 KPL` self-balance permanently stranded on the deprecated `0x740...` deployment.
 
 ## Execution Summary
 
@@ -55,7 +62,7 @@ Mint batch transactions:
 The selected policy was the cleaner retirement path:
 
 - reissue only the externally held `27,510 KPL`
-- omit the stranded legacy `2,240 KPL` from the replacement supply used in that exercise
+- omit the stranded legacy `2,240 KPL` from the replacement supply
 - keep the legacy contract as deprecated historical reference only
 
 No treasury or reserve wallet received a discretionary recreation of the stranded balance.
@@ -71,10 +78,10 @@ The migration artifacts committed to the repo are:
 
 ## Current Repo Posture
 
-The repo is not currently operating in post-migration mode:
+The repo is currently operating in post-migration mode:
 
-- `KINGPULSE_ADDRESS` and frontend defaults point to `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c`
-- `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369` is kept as historical/reference-only material unless the project intentionally switches back to it or performs a future migration
+- `KINGPULSE_ADDRESS` and frontend defaults point to `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
+- `0x740d1dcF13CDd101e34dDdCE6E4B9e350Ae3373c` is legacy and should not be the default contract
 - migration mint and finalize steps must not be rerun against `0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369`
 
 ## Historical And Reusable Commands
@@ -99,10 +106,10 @@ Build conservative `mintBatch` chunks:
 npm run migration:batches
 ```
 
-Inspect the historical replacement status:
+Inspect the live replacement status:
 
 ```bash
-KINGPULSE_MIGRATION_ADDRESS=0x8AC0786d71EE4D57C1FC6B7BCef4CDB807825369 npm run migration:status
+npm run migration:status
 ```
 
 For a fresh unreleased replacement deployment under test, the broadcaster and finalize helpers are still:
